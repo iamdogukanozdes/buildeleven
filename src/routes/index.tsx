@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 
 import { CalendlyEmbed } from "@/components/calendly-embed";
+import logoBlack from "@/assets/build-eleven-logo-black.png.asset.json";
 import {
   Bot,
   Calendar,
@@ -9,7 +10,6 @@ import {
   Cpu,
   Headphones,
   Menu,
-  Rocket,
   X,
 } from "lucide-react";
 
@@ -68,9 +68,11 @@ function Header({
     <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link to="/" className="flex items-center gap-2 text-xl font-bold tracking-tight text-foreground">
-          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-            <Rocket className="h-4 w-4" aria-hidden="true" />
-          </span>
+          <img
+            src={logoBlack.url}
+            alt="Build Eleven logo"
+            className="h-9 w-9 object-contain"
+          />
           Build Eleven
         </Link>
 
@@ -376,9 +378,11 @@ function Footer() {
     <footer className="border-t border-border px-4 py-10 sm:px-6 lg:px-8">
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 sm:flex-row">
         <div className="flex items-center gap-2 text-lg font-bold tracking-tight text-foreground">
-          <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-            <Rocket className="h-3.5 w-3.5" aria-hidden="true" />
-          </span>
+          <img
+            src={logoBlack.url}
+            alt="Build Eleven logo"
+            className="h-7 w-7 object-contain"
+          />
           Build Eleven
         </div>
         <p className="text-sm text-muted-foreground">
