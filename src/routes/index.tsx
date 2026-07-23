@@ -311,12 +311,13 @@ function Header({
         <div className="hidden items-center gap-3 md:flex">
           <LangSwitcher lang={lang} setLang={setLang} t={t} />
           <ThemeToggle onToggle={onToggleTheme} t={t} />
-          <a
-            href="#book"
+          <button
+            type="button"
+            onClick={onOpenBooking}
             className="inline-flex items-center justify-center rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-all hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/20"
           >
             {t.ctaBook}
-          </a>
+          </button>
         </div>
 
         <div className="flex items-center gap-2 md:hidden">
