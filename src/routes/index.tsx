@@ -500,7 +500,18 @@ function Footer({ t }: { t: T }) {
     <footer className="border-t border-border px-4 py-10 sm:px-6 lg:px-8">
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 sm:flex-row">
         <div className="flex items-center gap-2 text-lg font-bold tracking-tight text-foreground">
-          <img src={logoWhite.url} alt="Build Eleven logo" className="h-7 w-7 object-contain" />
+          <span className="relative h-7 w-7">
+            <img
+              src={logoBlack.url}
+              alt="Build Eleven logo"
+              className="absolute inset-0 h-full w-full object-contain block dark:hidden"
+            />
+            <img
+              src={logoWhite.url}
+              alt="Build Eleven logo"
+              className="absolute inset-0 h-full w-full object-contain hidden dark:block"
+            />
+          </span>
           Build Eleven
         </div>
         <p className="text-sm text-muted-foreground">
