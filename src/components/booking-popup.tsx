@@ -11,8 +11,11 @@ const CALENDLY_URL = "https://calendly.com/buildeleven/demo?month=2026-07";
 export function BookingPopup({ isOpen, onClose, title }: BookingPopupProps) {
   return (
     <Popup isOpen={isOpen} onClose={onClose} title={title}>
-      <div className="w-full">
-        <div className="relative w-full overflow-hidden rounded-xl border border-border bg-background" style={{ minHeight: "650px" }}>
+      <div className="flex h-full w-full flex-col">
+        <div
+          className="relative w-full flex-1 overflow-hidden rounded-xl border border-border bg-background"
+          style={{ minHeight: "650px" }}
+        >
           <iframe
             src={CALENDLY_URL}
             title="Book a call with Build Eleven"
