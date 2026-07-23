@@ -117,6 +117,7 @@ const translations = {
     emailCta: (email: string) => `Mail ${email}`,
     footerRights: "Alle rechten voorbehouden.",
     langLabel: "Taal",
+    themeToggle: "Thema wisselen",
   },
 };
 
