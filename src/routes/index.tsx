@@ -36,7 +36,7 @@ const translations = {
       {
         title: "AI Implementation",
         description:
-          "Integrate AI into your product or workflow — from chatbots and automation to intelligent features that save hours every week.",
+          "I integrate AI into your product or workflow. Think chatbots, automation, and smart features that save you hours every week.",
       },
       {
         title: "Web Building",
@@ -83,7 +83,7 @@ const translations = {
       {
         title: "AI-implementatie",
         description:
-          "Integreer AI in je product of workflow — van chatbots en automatisering tot slimme functies die je wekelijks uren besparen.",
+          "Ik integreer AI in je product of workflow. Dat kan chatbots, automatisering en slimme functies zijn die je wekelijks uren besparen.",
       },
       {
         title: "Webontwikkeling",
@@ -117,7 +117,7 @@ const translations = {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Build Eleven — AI-Powered Web Solutions" },
+      { title: "Build Eleven | AI-Powered Web Solutions" },
       {
         name: "description",
         content:
@@ -125,7 +125,7 @@ export const Route = createFileRoute("/")({
       },
       {
         property: "og:title",
-        content: "Build Eleven — AI-Powered Web Solutions",
+        content: "Build Eleven | AI-Powered Web Solutions",
       },
       {
         property: "og:description",
