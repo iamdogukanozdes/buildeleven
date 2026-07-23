@@ -273,14 +273,23 @@ function Header({
           Build Eleven
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex">
-          <a href="#services" className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
+        <nav className="hidden items-center gap-1 rounded-xl border border-border/50 bg-background/30 p-1 backdrop-blur-sm md:flex">
+          <a
+            href="#services"
+            className="rounded-lg px-4 py-1.5 text-sm font-medium text-foreground/80 transition-all duration-200 hover:bg-muted hover:text-foreground active:scale-95"
+          >
             {t.nav.services}
           </a>
-          <a href="#why" className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
+          <a
+            href="#why"
+            className="rounded-lg px-4 py-1.5 text-sm font-medium text-foreground/80 transition-all duration-200 hover:bg-muted hover:text-foreground active:scale-95"
+          >
             {t.nav.why}
           </a>
-          <a href="#book" className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
+          <a
+            href="#book"
+            className="rounded-lg px-4 py-1.5 text-sm font-medium text-foreground/80 transition-all duration-200 hover:bg-muted hover:text-foreground active:scale-95"
+          >
             {t.nav.book}
           </a>
         </nav>
