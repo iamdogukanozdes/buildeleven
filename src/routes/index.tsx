@@ -464,7 +464,7 @@ function Services({ t }: { t: T }) {
   );
 }
 
-function WhyMe({ t }: { t: T }) {
+function WhyMe({ t, onOpenBooking }: { t: T; onOpenBooking: () => void }) {
   return (
     <section id="why" className="bg-surface px-4 py-20 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-6xl">
@@ -474,12 +474,13 @@ function WhyMe({ t }: { t: T }) {
               {t.whyTitle}
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">{t.whySub}</p>
-            <a
-              href="#book"
+            <button
+              type="button"
+              onClick={onOpenBooking}
               className="mt-8 inline-flex items-center justify-center rounded-full bg-primary px-7 py-3.5 text-base font-semibold text-primary-foreground transition-all hover:bg-primary/90 hover:shadow-xl hover:shadow-primary/20"
             >
               {t.ctaBook}
-            </a>
+            </button>
           </div>
 
           <div className="grid gap-6 sm:grid-cols-2">
