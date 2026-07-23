@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { ExternalLink } from "lucide-react";
 
 import { Popup } from "./popup";
 
@@ -11,56 +11,30 @@ interface BookingPopupProps {
 const CALENDLY_URL = "https://calendly.com/buildeleven/demo";
 
 export function BookingPopup({ isOpen, onClose, title }: BookingPopupProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const initializedRef = useRef(false);
-
-  useEffect(() => {
-    if (!isOpen || initializedRef.current) return;
-
-    const existingScript = document.getElementById("calendly-widget-script") as HTMLScriptElement | null;
-
-    const initCalendly = () => {
-      if (containerRef.current && (window as unknown as { Calendly?: { initInlineWidget: (opts: { url: string; parentElement: HTMLElement }) => void } }).Calendly) {
-        (window as unknown as { Calendly: { initInlineWidget: (opts: { url: string; parentElement: HTMLElement }) => void } }).Calendly.initInlineWidget({
-          url: CALENDLY_URL,
-          parentElement: containerRef.current,
-        });
-        initializedRef.current = true;
-      }
-    };
-
-    if (existingScript && existingScript.dataset.loaded === "true") {
-      initCalendly();
-      return;
-    }
-
-    if (!existingScript) {
-      const script = document.createElement("script");
-      script.id = "calendly-widget-script";
-      script.src = "https://assets.calendly.com/assets/external/widget.js";
-      script.async = true;
-      script.onload = () => {
-        script.dataset.loaded = "true";
-        initCalendly();
-      };
-      document.body.appendChild(script);
-    } else {
-      existingScript.addEventListener("load", initCalendly, { once: true });
-    }
-  }, [isOpen]);
-
   return (
     <Popup isOpen={isOpen} onClose={onClose} title={title}>
-      <div className="flex h-full w-full flex-col">
-        <div
-          ref={containerRef}
-          className="calendly-inline-widget relative w-full flex-1 overflow-hidden rounded-xl border border-border bg-background"
-          style={{ minHeight: "650px" }}
-          data-url={CALENDLY_URL}
-        />
-        <p className="mt-4 text-center text-sm text-muted-foreground">
-          Powered by Calendly
-        </p>
+      <div className="flex flex-col items-center justify-center gap-6 py-8 text-center sm:py-12">
+        <div className="rounded-full bg-primary/10 p-4">
+          <ExternalLink className="h-8 w-8 text-primary" aria-hidden="true" />
+        </div>
+        <div className="max-w-sm space-y-2">
+          <p className="text-lg font-medium text-foreground">
+            Ready to chat?
+          </p>
+          <p className="text-muted-foreground">
+            Pick a time that works for you through Calendly. It opens in a new tab so you can book without leaving the site.
+          </p>
+        </div>
+        <a
+          href={CALENDLY_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-8 py-3.5 text-base font-semibold text-primary-foreground transition-all hover:bg-primary/90 hover:shadow-xl hover:shadow-primary/20"
+        >
+          Open Calendly
+          <ExternalLink className="h-4 w-4" aria-hidden="true" />
+        </a>
+        <p className="text-sm text-muted-foreground">Powered by Calendly</p>
       </div>
     </Popup>
   );
