@@ -3,7 +3,6 @@ import { useState } from "react";
 
 import { CalendlyEmbed } from "@/components/calendly-embed";
 import logoBlack from "@/assets/build-eleven-logo-black.png.asset.json";
-import logoWhite from "@/assets/build-eleven-logo-white.png.asset.json";
 import {
   Bot,
   Calendar,
