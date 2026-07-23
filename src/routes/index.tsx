@@ -500,7 +500,7 @@ function WhyMe({ t, onOpenBooking }: { t: T; onOpenBooking: () => void }) {
   );
 }
 
-function Booking({ t }: { t: T }) {
+function Booking({ t, onOpenContact }: { t: T; onOpenContact: () => void }) {
   return (
     <section id="book" className="px-4 py-20 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-3xl text-center">
@@ -512,13 +512,14 @@ function Booking({ t }: { t: T }) {
         </p>
 
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <a
-            href={`mailto:${CONTACT_EMAIL}?subject=Project%20inquiry`}
+          <button
+            type="button"
+            onClick={onOpenContact}
             className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-3.5 text-base font-semibold text-primary-foreground transition-all hover:bg-primary/90 hover:shadow-xl hover:shadow-primary/20"
           >
             <Mail className="h-4 w-4" aria-hidden="true" />
             {t.contactUs}
-          </a>
+          </button>
         </div>
       </div>
     </section>
