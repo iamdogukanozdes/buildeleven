@@ -6,11 +6,23 @@ interface BookingPopupProps {
   isOpen: boolean;
   onClose: () => void;
   title: string;
+  ready: string;
+  text: string;
+  openLabel: string;
+  powered: string;
 }
 
 const CALENDLY_URL = "https://calendly.com/buildeleven/demo";
 
-export function BookingPopup({ isOpen, onClose, title }: BookingPopupProps) {
+export function BookingPopup({
+  isOpen,
+  onClose,
+  title,
+  ready,
+  text,
+  openLabel,
+  powered,
+}: BookingPopupProps) {
   return (
     <Popup isOpen={isOpen} onClose={onClose} title={title}>
       <div className="flex flex-col items-center justify-center gap-6 py-8 text-center sm:py-12">
@@ -18,12 +30,8 @@ export function BookingPopup({ isOpen, onClose, title }: BookingPopupProps) {
           <ExternalLink className="h-8 w-8 text-primary" aria-hidden="true" />
         </div>
         <div className="max-w-sm space-y-2">
-          <p className="text-lg font-medium text-foreground">
-            Ready to chat?
-          </p>
-          <p className="text-muted-foreground">
-            Pick a time that works for you through Calendly. It opens in a new tab so you can book without leaving the site.
-          </p>
+          <p className="text-lg font-medium text-foreground">{ready}</p>
+          <p className="text-muted-foreground">{text}</p>
         </div>
         <a
           href={CALENDLY_URL}
@@ -31,10 +39,10 @@ export function BookingPopup({ isOpen, onClose, title }: BookingPopupProps) {
           rel="noopener noreferrer"
           className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-8 py-3.5 text-base font-semibold text-primary-foreground transition-all hover:bg-primary/90 hover:shadow-xl hover:shadow-primary/20"
         >
-          Open Calendly
+          {openLabel}
           <ExternalLink className="h-4 w-4" aria-hidden="true" />
         </a>
-        <p className="text-sm text-muted-foreground">Powered by Calendly</p>
+        <p className="text-sm text-muted-foreground">{powered}</p>
       </div>
     </Popup>
   );
