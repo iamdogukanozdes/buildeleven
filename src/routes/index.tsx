@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 
+import logoBlack from "@/assets/build-eleven-logo-black.png.asset.json";
 import logoWhite from "@/assets/build-eleven-logo-white.png.asset.json";
 import {
   Bot,
@@ -10,8 +11,12 @@ import {
   Headphones,
   Mail,
   Menu,
+  Moon,
+  Sun,
   X,
 } from "lucide-react";
+
+type Theme = "dark" | "light";
 
 const CONTACT_EMAIL = "info@buildeleven.com";
 
@@ -64,6 +69,7 @@ const translations = {
     emailCta: (email: string) => `Email ${email}`,
     footerRights: "All rights reserved.",
     langLabel: "Language",
+    themeToggle: "Toggle theme",
   },
   nl: {
     nav: { services: "Diensten", why: "Waarom ik", book: "Plan een gesprek" },
@@ -111,6 +117,7 @@ const translations = {
     emailCta: (email: string) => `Mail ${email}`,
     footerRights: "Alle rechten voorbehouden.",
     langLabel: "Taal",
+    themeToggle: "Thema wisselen",
   },
 };
 
@@ -142,15 +149,30 @@ export const Route = createFileRoute("/")({
 function Index() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [lang, setLang] = useState<Lang>("en");
+  const [theme, setTheme] = useState<Theme>("dark");
 
   useEffect(() => {
-    const stored = typeof window !== "undefined" ? (localStorage.getItem("lang") as Lang | null) : null;
-    if (stored === "en" || stored === "nl") setLang(stored);
+    const storedLang = typeof window !== "undefined" ? (localStorage.getItem("lang") as Lang | null) : null;
+    if (storedLang === "en" || storedLang === "nl") setLang(storedLang);
+
+    const storedTheme = typeof window !== "undefined" ? (localStorage.getItem("theme") as Theme | null) : null;
+    const isDark = storedTheme !== "light";
+    setTheme(isDark ? "dark" : "light");
+    document.documentElement.classList.toggle("dark", isDark);
   }, []);
 
   useEffect(() => {
     if (typeof window !== "undefined") localStorage.setItem("lang", lang);
   }, [lang]);
+
+  const toggleTheme = () => {
+    const next = theme === "dark" ? "light" : "dark";
+    setTheme(next);
+    if (typeof window !== "undefined") {
+      localStorage.setItem("theme", next);
+      document.documentElement.classList.toggle("dark", next === "dark");
+    }
+  };
 
   const t = translations[lang];
 
@@ -162,6 +184,7 @@ function Index() {
         setLang={setLang}
         mobileMenuOpen={mobileMenuOpen}
         setMobileMenuOpen={setMobileMenuOpen}
+        onToggleTheme={toggleTheme}
       />
       <main className="flex-1">
         <Hero t={t} />
@@ -202,28 +225,51 @@ function LangSwitcher({ lang, setLang, t }: { lang: Lang; setLang: (l: Lang) => 
   );
 }
 
+function ThemeToggle({ onToggle, t }: { onToggle: () => void; t: T }) {
+  return (
+    <button
+      type="button"
+      onClick={onToggle}
+      aria-label={t.themeToggle}
+      className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border bg-surface text-foreground transition-colors hover:bg-muted"
+    >
+      <Sun className="h-4 w-4 block dark:hidden" aria-hidden="true" />
+      <Moon className="h-4 w-4 hidden dark:block" aria-hidden="true" />
+    </button>
+  );
+}
+
 function Header({
   t,
   lang,
   setLang,
   mobileMenuOpen,
   setMobileMenuOpen,
+  onToggleTheme,
 }: {
   t: T;
   lang: Lang;
   setLang: (l: Lang) => void;
   mobileMenuOpen: boolean;
   setMobileMenuOpen: (open: boolean) => void;
+  onToggleTheme: () => void;
 }) {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link to="/" className="flex items-center gap-2 text-xl font-bold tracking-tight text-foreground">
-          <img
-            src={logoWhite.url}
-            alt="Build Eleven logo"
-            className="h-9 w-9 object-contain"
-          />
+          <span className="relative h-9 w-9">
+            <img
+              src={logoBlack.url}
+              alt="Build Eleven logo"
+              className="absolute inset-0 h-full w-full object-contain block dark:hidden"
+            />
+            <img
+              src={logoWhite.url}
+              alt="Build Eleven logo"
+              className="absolute inset-0 h-full w-full object-contain hidden dark:block"
+            />
+          </span>
           Build Eleven
         </Link>
 
@@ -241,6 +287,7 @@ function Header({
 
         <div className="hidden items-center gap-3 md:flex">
           <LangSwitcher lang={lang} setLang={setLang} t={t} />
+          <ThemeToggle onToggle={onToggleTheme} t={t} />
           <a
             href="#book"
             className="inline-flex items-center justify-center rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-all hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/20"
@@ -251,6 +298,7 @@ function Header({
 
         <div className="flex items-center gap-2 md:hidden">
           <LangSwitcher lang={lang} setLang={setLang} t={t} />
+          <ThemeToggle onToggle={onToggleTheme} t={t} />
           <button
             type="button"
             className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-foreground"
@@ -452,7 +500,18 @@ function Footer({ t }: { t: T }) {
     <footer className="border-t border-border px-4 py-10 sm:px-6 lg:px-8">
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 sm:flex-row">
         <div className="flex items-center gap-2 text-lg font-bold tracking-tight text-foreground">
-          <img src={logoWhite.url} alt="Build Eleven logo" className="h-7 w-7 object-contain" />
+          <span className="relative h-7 w-7">
+            <img
+              src={logoBlack.url}
+              alt="Build Eleven logo"
+              className="absolute inset-0 h-full w-full object-contain block dark:hidden"
+            />
+            <img
+              src={logoWhite.url}
+              alt="Build Eleven logo"
+              className="absolute inset-0 h-full w-full object-contain hidden dark:block"
+            />
+          </span>
           Build Eleven
         </div>
         <p className="text-sm text-muted-foreground">
