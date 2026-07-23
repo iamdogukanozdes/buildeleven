@@ -364,7 +364,7 @@ function Header({
   );
 }
 
-function Hero({ t }: { t: T }) {
+function Hero({ t, onOpenBooking, onOpenContact }: { t: T; onOpenBooking: () => void; onOpenContact: () => void }) {
   return (
     <section className="relative overflow-hidden px-4 pb-20 pt-16 sm:px-6 sm:pt-24 lg:px-8 lg:pt-32">
       <div className="absolute inset-0 -z-10">
@@ -400,19 +400,21 @@ function Hero({ t }: { t: T }) {
         </p>
 
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <a
-            href="#book"
+          <button
+            type="button"
+            onClick={onOpenBooking}
             className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-3.5 text-base font-semibold text-primary-foreground transition-all hover:bg-primary/90 hover:shadow-xl hover:shadow-primary/20"
           >
             <Calendar className="h-4 w-4" aria-hidden="true" />
             {t.ctaBookStrategy}
-          </a>
-          <a
-            href="#services"
+          </button>
+          <button
+            type="button"
+            onClick={onOpenContact}
             className="inline-flex items-center justify-center rounded-full border border-border bg-surface px-7 py-3.5 text-base font-semibold text-surface-foreground transition-colors hover:bg-muted"
           >
-            {t.ctaExplore}
-          </a>
+            {t.contactUs}
+          </button>
         </div>
       </div>
     </section>
