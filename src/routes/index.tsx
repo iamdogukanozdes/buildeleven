@@ -72,7 +72,7 @@ const translations = {
     themeToggle: "Toggle theme",
   },
   nl: {
-    nav: { services: "Diensten", why: "Waarom ik", book: "Plan een gesprek" },
+    nav: { services: "Diensten", why: "Waarom wij", book: "Plan een gesprek" },
     ctaBook: "Plan een gratis gesprek",
     ctaBookStrategy: "Plan een gratis strategiegesprek",
     ctaExplore: "Bekijk diensten",
@@ -81,15 +81,15 @@ const translations = {
     heroTitleHighlight: "AI-gedreven",
     heroTitleB: "weboplossingen",
     heroSub:
-      "Build Eleven helpt oprichters en teams lanceren, automatiseren en schalen. Ik ontwerp en bouw maatwerk websites en voeg praktische AI toe die je écht tijd bespaart.",
-    servicesTitle: "Waar ik je mee kan helpen",
+      "Build Eleven helpt oprichters en teams lanceren, automatiseren en schalen. Wij ontwerpen en bouwen maatwerk websites en voegen praktische AI toe die je écht tijd bespaart.",
+    servicesTitle: "Waar we je mee kunnen helpen",
     servicesSub:
-      "Drie manieren waarop ik met teams werk: iets nieuws lanceren, AI toevoegen, of houden wat je hebt soepel draaiende.",
+      "Drie manieren waarop we met teams werken: iets nieuws lanceren, AI toevoegen, of houden wat je hebt soepel draaiende.",
     services: [
       {
         title: "AI-implementatie",
         description:
-          "Ik integreer AI in je product of workflow. Dat kan chatbots, automatisering en slimme functies zijn die je wekelijks uren besparen.",
+          "Wij integreren AI in je product of workflow. Dat kan chatbots, automatisering en slimme functies zijn die je wekelijks uren besparen.",
       },
       {
         title: "Webontwikkeling",
@@ -104,16 +104,16 @@ const translations = {
     ],
     whyTitle: "Waarom werken met Build Eleven?",
     whySub:
-      "Ik combineer technische uitvoering met productdenken, zodat je een site of tool krijgt die werkt voor je gebruikers én je business.",
+      "Wij combineren technische uitvoering met productdenken, zodat je een site of tool krijgt die werkt voor je gebruikers én je business.",
     reasons: [
-      { title: "Productgericht", description: "Ik focus op resultaten, niet alleen op output. Elke functie is gekoppeld aan een businessdoel." },
-      { title: "AI, praktisch", description: "Geen hype. Ik implementeer AI waar het echt frictie wegneemt of waarde creëert." },
+      { title: "Productgericht", description: "Wij focussen op resultaten, niet alleen op output. Elke functie is gekoppeld aan een businessdoel." },
+      { title: "AI, praktisch", description: "Geen hype. Wij implementeren AI waar het echt frictie wegneemt of waarde creëert." },
       { title: "Snel leveren", description: "Slanke sprints, heldere communicatie en werkende demo's vroeg in het proces." },
-      { title: "Lange termijn partner", description: "Ik blijf betrokken voor support, iteratie en schaalvergroting na de lancering." },
+      { title: "Lange termijn partner", description: "Wij blijven betrokken voor support, iteratie en schaalvergroting na de lancering." },
     ],
     bookTitle: "Laten we het over je project hebben",
     bookSub:
-      "Vertel me wat je bouwt. Ik reageer binnen één werkdag om een gratis gesprek van 30 minuten in te plannen.",
+      "Vertel ons wat je bouwt. We reageren binnen één werkdag om een gratis gesprek van 30 minuten in te plannen.",
     contactUs: "Neem contact op",
     footerRights: "Alle rechten voorbehouden.",
     langLabel: "Taal",
