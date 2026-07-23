@@ -66,7 +66,7 @@ const translations = {
     bookTitle: "Let's talk about your project",
     bookSub:
       "Tell me what you're building. I'll get back to you within one business day to set up a free 30-minute call.",
-    emailCta: (email: string) => `Email ${email}`,
+    contactUs: "Contact Us",
     footerRights: "All rights reserved.",
     langLabel: "Language",
     themeToggle: "Toggle theme",
@@ -114,7 +114,7 @@ const translations = {
     bookTitle: "Laten we het over je project hebben",
     bookSub:
       "Vertel me wat je bouwt. Ik reageer binnen één werkdag om een gratis gesprek van 30 minuten in te plannen.",
-    emailCta: (email: string) => `Mail ${email}`,
+    contactUs: "Neem contact op",
     footerRights: "Alle rechten voorbehouden.",
     langLabel: "Taal",
     themeToggle: "Thema wisselen",
@@ -487,7 +487,7 @@ function Booking({ t }: { t: T }) {
             className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-3.5 text-base font-semibold text-primary-foreground transition-all hover:bg-primary/90 hover:shadow-xl hover:shadow-primary/20"
           >
             <Mail className="h-4 w-4" aria-hidden="true" />
-            {t.emailCta(CONTACT_EMAIL)}
+            {t.contactUs}
           </a>
         </div>
       </div>
