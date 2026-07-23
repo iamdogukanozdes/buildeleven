@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 
-import logoBlack from "@/assets/build-eleven-logo-black.png.asset.json";
+import logoBlack from "@/assets/build-eleven-logo-white.png.asset.json";
 import {
   Bot,
   Calendar,
