@@ -112,7 +112,7 @@ const translations = {
     footerRights: "Alle rechten voorbehouden.",
     langLabel: "Taal",
   },
-} as const;
+};
 
 export const Route = createFileRoute("/")({
   head: () => ({
