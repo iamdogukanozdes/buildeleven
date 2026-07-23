@@ -225,6 +225,20 @@ function LangSwitcher({ lang, setLang, t }: { lang: Lang; setLang: (l: Lang) => 
   );
 }
 
+function ThemeToggle({ onToggle, t }: { onToggle: () => void; t: T }) {
+  return (
+    <button
+      type="button"
+      onClick={onToggle}
+      aria-label={t.themeToggle}
+      className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border bg-surface text-foreground transition-colors hover:bg-muted"
+    >
+      <Sun className="h-4 w-4 block dark:hidden" aria-hidden="true" />
+      <Moon className="h-4 w-4 hidden dark:block" aria-hidden="true" />
+    </button>
+  );
+}
+
 function Header({
   t,
   lang,
