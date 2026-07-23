@@ -1,7 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 
-import { CalendlyEmbed } from "@/components/calendly-embed";
 import logoBlack from "@/assets/build-eleven-logo-black.png.asset.json";
 import {
   Bot,
@@ -9,11 +8,12 @@ import {
   Code2,
   Cpu,
   Headphones,
+  Mail,
   Menu,
   X,
 } from "lucide-react";
 
-const CALENDLY_URL = "https://calendly.com/buildeleven/demo";
+const CONTACT_EMAIL = "info@buildeleven.com";
 
 export const Route = createFileRoute("/")({
   head: () => ({
