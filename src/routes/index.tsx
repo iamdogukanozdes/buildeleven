@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-import logoBlack from "@/assets/build-eleven-logo-white.png.asset.json";
+import logoWhite from "@/assets/build-eleven-logo-white.png.asset.json";
 import {
   Bot,
   Calendar,
@@ -14,6 +14,105 @@ import {
 } from "lucide-react";
 
 const CONTACT_EMAIL = "info@buildeleven.com";
+
+type Lang = "en" | "nl";
+
+const translations = {
+  en: {
+    nav: { services: "Services", why: "Why me", book: "Book a call" },
+    ctaBook: "Book a free call",
+    ctaBookStrategy: "Book a free strategy call",
+    ctaExplore: "Explore services",
+    heroBadge: "AI implementation + web development",
+    heroTitleA: "Build smarter with",
+    heroTitleHighlight: "AI-powered",
+    heroTitleB: "web solutions",
+    heroSub:
+      "Build Eleven helps founders and teams launch, automate, and scale. I design and build custom websites, then layer in practical AI that actually saves you time.",
+    servicesTitle: "What I can help you build",
+    servicesSub:
+      "Three ways I work with teams: launch something new, add AI, or keep what you have running smoothly.",
+    services: [
+      {
+        title: "AI Implementation",
+        description:
+          "Integrate AI into your product or workflow — from chatbots and automation to intelligent features that save hours every week.",
+      },
+      {
+        title: "Web Building",
+        description:
+          "Custom websites and web apps built for performance, conversion, and easy maintenance. From landing pages to full-stack products.",
+      },
+      {
+        title: "Ongoing Support",
+        description:
+          "Reliable support, updates, and optimization so your site keeps working as your business grows.",
+      },
+    ],
+    whyTitle: "Why work with Build Eleven?",
+    whySub:
+      "I combine technical execution with product thinking, so you get a site or tool that works for your users and your business.",
+    reasons: [
+      { title: "Product-minded", description: "I focus on outcomes, not just output. Every feature is tied to a business goal." },
+      { title: "AI, practically", description: "No hype. I implement AI where it genuinely removes friction or creates value." },
+      { title: "Ship fast", description: "Lean sprints, clear communication, and working demos early in the process." },
+      { title: "Long-term partner", description: "I stick around for support, iteration, and scaling after launch." },
+    ],
+    bookTitle: "Let's talk about your project",
+    bookSub:
+      "Tell me what you're building. I'll get back to you within one business day to set up a free 30-minute call.",
+    emailCta: (email: string) => `Email ${email}`,
+    footerRights: "All rights reserved.",
+    langLabel: "Language",
+  },
+  nl: {
+    nav: { services: "Diensten", why: "Waarom ik", book: "Plan een gesprek" },
+    ctaBook: "Plan een gratis gesprek",
+    ctaBookStrategy: "Plan een gratis strategiegesprek",
+    ctaExplore: "Bekijk diensten",
+    heroBadge: "AI-implementatie + webontwikkeling",
+    heroTitleA: "Bouw slimmer met",
+    heroTitleHighlight: "AI-gedreven",
+    heroTitleB: "weboplossingen",
+    heroSub:
+      "Build Eleven helpt oprichters en teams lanceren, automatiseren en schalen. Ik ontwerp en bouw maatwerk websites en voeg praktische AI toe die je écht tijd bespaart.",
+    servicesTitle: "Waar ik je mee kan helpen",
+    servicesSub:
+      "Drie manieren waarop ik met teams werk: iets nieuws lanceren, AI toevoegen, of houden wat je hebt soepel draaiende.",
+    services: [
+      {
+        title: "AI-implementatie",
+        description:
+          "Integreer AI in je product of workflow — van chatbots en automatisering tot slimme functies die je wekelijks uren besparen.",
+      },
+      {
+        title: "Webontwikkeling",
+        description:
+          "Maatwerk websites en webapps gebouwd voor performance, conversie en eenvoudig onderhoud. Van landingspagina's tot full-stack producten.",
+      },
+      {
+        title: "Doorlopende Support",
+        description:
+          "Betrouwbare ondersteuning, updates en optimalisatie zodat je site blijft werken terwijl je bedrijf groeit.",
+      },
+    ],
+    whyTitle: "Waarom werken met Build Eleven?",
+    whySub:
+      "Ik combineer technische uitvoering met productdenken, zodat je een site of tool krijgt die werkt voor je gebruikers én je business.",
+    reasons: [
+      { title: "Productgericht", description: "Ik focus op resultaten, niet alleen op output. Elke functie is gekoppeld aan een businessdoel." },
+      { title: "AI, praktisch", description: "Geen hype. Ik implementeer AI waar het echt frictie wegneemt of waarde creëert." },
+      { title: "Snel leveren", description: "Slanke sprints, heldere communicatie en werkende demo's vroeg in het proces." },
+      { title: "Lange termijn partner", description: "Ik blijf betrokken voor support, iteratie en schaalvergroting na de lancering." },
+    ],
+    bookTitle: "Laten we het over je project hebben",
+    bookSub:
+      "Vertel me wat je bouwt. Ik reageer binnen één werkdag om een gratis gesprek van 30 minuten in te plannen.",
+    emailCta: (email: string) => `Mail ${email}`,
+    footerRights: "Alle rechten voorbehouden.",
+    langLabel: "Taal",
+  },
+} as const;
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -42,25 +141,77 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [lang, setLang] = useState<Lang>("en");
+
+  useEffect(() => {
+    const stored = typeof window !== "undefined" ? (localStorage.getItem("lang") as Lang | null) : null;
+    if (stored === "en" || stored === "nl") setLang(stored);
+  }, []);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") localStorage.setItem("lang", lang);
+  }, [lang]);
+
+  const t = translations[lang];
 
   return (
     <div className="flex min-h-screen flex-col">
-      <Header mobileMenuOpen={mobileMenuOpen} setMobileMenuOpen={setMobileMenuOpen} />
+      <Header
+        t={t}
+        lang={lang}
+        setLang={setLang}
+        mobileMenuOpen={mobileMenuOpen}
+        setMobileMenuOpen={setMobileMenuOpen}
+      />
       <main className="flex-1">
-        <Hero />
-        <Services />
-        <WhyMe />
-        <Booking />
+        <Hero t={t} />
+        <Services t={t} />
+        <WhyMe t={t} />
+        <Booking t={t} />
       </main>
-      <Footer />
+      <Footer t={t} />
+    </div>
+  );
+}
+
+type T = typeof translations.en;
+
+function LangSwitcher({ lang, setLang, t }: { lang: Lang; setLang: (l: Lang) => void; t: T }) {
+  return (
+    <div
+      role="group"
+      aria-label={t.langLabel}
+      className="inline-flex items-center rounded-full border border-border bg-surface p-0.5 text-xs font-semibold"
+    >
+      {(["en", "nl"] as const).map((code) => (
+        <button
+          key={code}
+          type="button"
+          onClick={() => setLang(code)}
+          className={`rounded-full px-2.5 py-1 uppercase transition-colors ${
+            lang === code
+              ? "bg-primary text-primary-foreground"
+              : "text-muted-foreground hover:text-foreground"
+          }`}
+          aria-pressed={lang === code}
+        >
+          {code}
+        </button>
+      ))}
     </div>
   );
 }
 
 function Header({
+  t,
+  lang,
+  setLang,
   mobileMenuOpen,
   setMobileMenuOpen,
 }: {
+  t: T;
+  lang: Lang;
+  setLang: (l: Lang) => void;
   mobileMenuOpen: boolean;
   setMobileMenuOpen: (open: boolean) => void;
 }) {
@@ -69,7 +220,7 @@ function Header({
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link to="/" className="flex items-center gap-2 text-xl font-bold tracking-tight text-foreground">
           <img
-            src={logoBlack.url}
+            src={logoWhite.url}
             alt="Build Eleven logo"
             className="h-9 w-9 object-contain"
           />
@@ -77,76 +228,59 @@ function Header({
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
-          <a
-            href="#services"
-            className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-          >
-            Services
+          <a href="#services" className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
+            {t.nav.services}
           </a>
-          <a
-            href="#why"
-            className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-          >
-            Why me
+          <a href="#why" className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
+            {t.nav.why}
           </a>
-          <a
-            href="#book"
-            className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-          >
-            Book a call
+          <a href="#book" className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
+            {t.nav.book}
           </a>
         </nav>
 
-        <div className="hidden md:block">
+        <div className="hidden items-center gap-3 md:flex">
+          <LangSwitcher lang={lang} setLang={setLang} t={t} />
           <a
             href="#book"
             className="inline-flex items-center justify-center rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-all hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/20"
           >
-            Book a free call
+            {t.ctaBook}
           </a>
         </div>
 
-        <button
-          type="button"
-          className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-foreground md:hidden"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
-          aria-expanded={mobileMenuOpen}
-        >
-          {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
+        <div className="flex items-center gap-2 md:hidden">
+          <LangSwitcher lang={lang} setLang={setLang} t={t} />
+          <button
+            type="button"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-foreground"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileMenuOpen}
+          >
+            {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
       </div>
 
       {mobileMenuOpen && (
         <div className="border-t border-border/60 bg-background px-4 py-4 md:hidden">
           <nav className="flex flex-col gap-3">
-            <a
-              href="#services"
-              className="text-base font-medium text-muted-foreground transition-colors hover:text-foreground"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Services
+            <a href="#services" className="text-base font-medium text-muted-foreground transition-colors hover:text-foreground" onClick={() => setMobileMenuOpen(false)}>
+              {t.nav.services}
             </a>
-            <a
-              href="#why"
-              className="text-base font-medium text-muted-foreground transition-colors hover:text-foreground"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Why me
+            <a href="#why" className="text-base font-medium text-muted-foreground transition-colors hover:text-foreground" onClick={() => setMobileMenuOpen(false)}>
+              {t.nav.why}
             </a>
-            <a
-              href="#book"
-              className="text-base font-medium text-muted-foreground transition-colors hover:text-foreground"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Book a call
+            <a href="#book" className="text-base font-medium text-muted-foreground transition-colors hover:text-foreground" onClick={() => setMobileMenuOpen(false)}>
+              {t.nav.book}
             </a>
             <a
               href="#book"
               className="mt-2 inline-flex items-center justify-center rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Book a free call
+              {t.ctaBook}
             </a>
           </nav>
         </div>
@@ -155,7 +289,7 @@ function Header({
   );
 }
 
-function Hero() {
+function Hero({ t }: { t: T }) {
   return (
     <section className="relative overflow-hidden px-4 pb-20 pt-16 sm:px-6 sm:pt-24 lg:px-8 lg:pt-32">
       <div className="absolute inset-0 -z-10">
@@ -166,13 +300,13 @@ function Hero() {
       <div className="mx-auto max-w-4xl text-center">
         <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-1.5 text-sm font-medium text-surface-foreground shadow-sm">
           <Cpu className="h-4 w-4 text-accent" aria-hidden="true" />
-          <span>AI implementation + web development</span>
+          <span>{t.heroBadge}</span>
         </div>
 
         <h1 className="text-balance text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-          Build smarter with{" "}
+          {t.heroTitleA}{" "}
           <span className="relative inline-block">
-            AI-powered
+            {t.heroTitleHighlight}
             <svg
               className="absolute -bottom-2 left-0 w-full text-accent"
               viewBox="0 0 300 12"
@@ -180,21 +314,14 @@ function Hero() {
               xmlns="http://www.w3.org/2000/svg"
               aria-hidden="true"
             >
-              <path
-                d="M2 8.5C50 2 250 2 298 8.5"
-                stroke="currentColor"
-                strokeWidth="4"
-                strokeLinecap="round"
-              />
+              <path d="M2 8.5C50 2 250 2 298 8.5" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
             </svg>
           </span>{" "}
-          web solutions
+          {t.heroTitleB}
         </h1>
 
         <p className="mx-auto mt-6 max-w-2xl text-balance text-lg leading-relaxed text-muted-foreground sm:text-xl">
-          Build Eleven helps founders and teams launch, automate, and scale. I
-          design and build custom websites, then layer in practical AI that
-          actually saves you time.
+          {t.heroSub}
         </p>
 
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -203,13 +330,13 @@ function Hero() {
             className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-3.5 text-base font-semibold text-primary-foreground transition-all hover:bg-primary/90 hover:shadow-xl hover:shadow-primary/20"
           >
             <Calendar className="h-4 w-4" aria-hidden="true" />
-            Book a free strategy call
+            {t.ctaBookStrategy}
           </a>
           <a
             href="#services"
             className="inline-flex items-center justify-center rounded-full border border-border bg-surface px-7 py-3.5 text-base font-semibold text-surface-foreground transition-colors hover:bg-muted"
           >
-            Explore services
+            {t.ctaExplore}
           </a>
         </div>
       </div>
@@ -217,133 +344,75 @@ function Hero() {
   );
 }
 
-function Services() {
-  const services = [
-    {
-      icon: Bot,
-      title: "AI Implementation",
-      description:
-        "Integrate AI into your product or workflow — from chatbots and automation to intelligent features that save hours every week.",
-      highlight: true,
-    },
-    {
-      icon: Code2,
-      title: "Web Building",
-      description:
-        "Custom websites and web apps built for performance, conversion, and easy maintenance. From landing pages to full-stack products.",
-      highlight: false,
-    },
-    {
-      icon: Headphones,
-      title: "Ongoing Support",
-      description:
-        "Reliable support, updates, and optimization so your site keeps working as your business grows.",
-      highlight: false,
-    },
-  ];
-
+function Services({ t }: { t: T }) {
+  const icons = [Bot, Code2, Headphones];
   return (
     <section id="services" className="px-4 py-20 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-6xl">
         <div className="mb-12 text-center">
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            What I can help you build
+            {t.servicesTitle}
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-balance text-lg text-muted-foreground">
-            Three ways I work with teams: launch something new, add AI, or keep
-            what you have running smoothly.
+            {t.servicesSub}
           </p>
         </div>
 
         <div className="grid gap-6 md:grid-cols-3">
-          {services.map((service) => (
-            <div
-              key={service.title}
-              className={`group relative rounded-2xl border p-6 transition-all hover:-translate-y-1 hover:shadow-lg sm:p-8 ${
-                service.highlight
-                  ? "border-primary/20 bg-primary/5"
-                  : "border-border bg-surface"
-              }`}
-            >
+          {t.services.map((service, i) => {
+            const Icon = icons[i];
+            const highlight = i === 0;
+            return (
               <div
-                className={`mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl ${
-                  service.highlight
-                    ? "bg-primary text-primary-foreground"
-                    : "bg-muted text-foreground"
+                key={service.title}
+                className={`group relative rounded-2xl border p-6 transition-all hover:-translate-y-1 hover:shadow-lg sm:p-8 ${
+                  highlight ? "border-primary/20 bg-primary/5" : "border-border bg-surface"
                 }`}
               >
-                <service.icon className="h-6 w-6" aria-hidden="true" />
+                <div
+                  className={`mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl ${
+                    highlight ? "bg-primary text-primary-foreground" : "bg-muted text-foreground"
+                  }`}
+                >
+                  <Icon className="h-6 w-6" aria-hidden="true" />
+                </div>
+                <h3 className="text-xl font-semibold text-foreground">{service.title}</h3>
+                <p className="mt-3 leading-relaxed text-muted-foreground">{service.description}</p>
               </div>
-              <h3 className="text-xl font-semibold text-foreground">
-                {service.title}
-              </h3>
-              <p className="mt-3 leading-relaxed text-muted-foreground">
-                {service.description}
-              </p>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
   );
 }
 
-function WhyMe() {
-  const reasons = [
-    {
-      title: "Product-minded",
-      description:
-        "I focus on outcomes, not just output. Every feature is tied to a business goal.",
-    },
-    {
-      title: "AI, practically",
-      description:
-        "No hype. I implement AI where it genuinely removes friction or creates value.",
-    },
-    {
-      title: "Ship fast",
-      description:
-        "Lean sprints, clear communication, and working demos early in the process.",
-    },
-    {
-      title: "Long-term partner",
-      description:
-        "I stick around for support, iteration, and scaling after launch.",
-    },
-  ];
-
+function WhyMe({ t }: { t: T }) {
   return (
     <section id="why" className="bg-surface px-4 py-20 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-6xl">
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
           <div>
             <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Why work with Build Eleven?
+              {t.whyTitle}
             </h2>
-            <p className="mt-4 text-lg text-muted-foreground">
-              I combine technical execution with product thinking, so you get a
-              site or tool that works for your users and your business.
-            </p>
+            <p className="mt-4 text-lg text-muted-foreground">{t.whySub}</p>
             <a
               href="#book"
               className="mt-8 inline-flex items-center justify-center rounded-full bg-primary px-7 py-3.5 text-base font-semibold text-primary-foreground transition-all hover:bg-primary/90 hover:shadow-xl hover:shadow-primary/20"
             >
-              Book a free call
+              {t.ctaBook}
             </a>
           </div>
 
           <div className="grid gap-6 sm:grid-cols-2">
-            {reasons.map((reason) => (
+            {t.reasons.map((reason) => (
               <div
                 key={reason.title}
                 className="rounded-2xl border border-border bg-background p-5 transition-all hover:-translate-y-0.5 hover:shadow-md"
               >
-                <h3 className="text-lg font-semibold text-foreground">
-                  {reason.title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  {reason.description}
-                </p>
+                <h3 className="text-lg font-semibold text-foreground">{reason.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{reason.description}</p>
               </div>
             ))}
           </div>
@@ -353,16 +422,15 @@ function WhyMe() {
   );
 }
 
-function Booking() {
+function Booking({ t }: { t: T }) {
   return (
     <section id="book" className="px-4 py-20 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-3xl text-center">
         <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-          Let&apos;s talk about your project
+          {t.bookTitle}
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-balance text-lg text-muted-foreground">
-          Tell me what you&apos;re building. I&apos;ll get back to you within one
-          business day to set up a free 30-minute call.
+          {t.bookSub}
         </p>
 
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -371,7 +439,7 @@ function Booking() {
             className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-3.5 text-base font-semibold text-primary-foreground transition-all hover:bg-primary/90 hover:shadow-xl hover:shadow-primary/20"
           >
             <Mail className="h-4 w-4" aria-hidden="true" />
-            Email {CONTACT_EMAIL}
+            {t.emailCta(CONTACT_EMAIL)}
           </a>
         </div>
       </div>
@@ -379,20 +447,16 @@ function Booking() {
   );
 }
 
-function Footer() {
+function Footer({ t }: { t: T }) {
   return (
     <footer className="border-t border-border px-4 py-10 sm:px-6 lg:px-8">
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 sm:flex-row">
         <div className="flex items-center gap-2 text-lg font-bold tracking-tight text-foreground">
-          <img
-            src={logoBlack.url}
-            alt="Build Eleven logo"
-            className="h-7 w-7 object-contain"
-          />
+          <img src={logoWhite.url} alt="Build Eleven logo" className="h-7 w-7 object-contain" />
           Build Eleven
         </div>
         <p className="text-sm text-muted-foreground">
-          © {new Date().getFullYear()} Build Eleven. All rights reserved.
+          © {new Date().getFullYear()} Build Eleven. {t.footerRights}
         </p>
       </div>
     </footer>
