@@ -70,6 +70,11 @@ const translations = {
     bookSub:
       "Tell us what you're building. We'll get back to you within one business day to set up a free 30-minute call.",
     contactUs: "Contact Us",
+    bookingPopupReady: "Ready to chat?",
+    bookingPopupText:
+      "Pick a time that works for you through Calendly. It opens in a new tab so you can book without leaving the site.",
+    bookingPopupOpen: "Open Calendly",
+    bookingPopupPowered: "Powered by Calendly",
     footerRights: "All rights reserved.",
     langLabel: "Language",
     themeToggle: "Toggle theme",
