@@ -379,9 +379,11 @@ function Footer() {
     <footer className="border-t border-border px-4 py-10 sm:px-6 lg:px-8">
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 sm:flex-row">
         <div className="flex items-center gap-2 text-lg font-bold tracking-tight text-foreground">
-          <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-            <Rocket className="h-3.5 w-3.5" aria-hidden="true" />
-          </span>
+          <img
+            src={logoBlack.url}
+            alt="Build Eleven logo"
+            className="h-7 w-7 object-contain"
+          />
           Build Eleven
         </div>
         <p className="text-sm text-muted-foreground">
