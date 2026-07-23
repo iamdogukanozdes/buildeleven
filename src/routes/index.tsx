@@ -24,7 +24,7 @@ type Lang = "en" | "nl";
 
 const translations = {
   en: {
-    nav: { services: "Services", why: "Why me", book: "Book a call" },
+    nav: { services: "Services", why: "Why us", book: "Book a call" },
     ctaBook: "Book a free call",
     ctaBookStrategy: "Book a free strategy call",
     ctaExplore: "Explore services",
@@ -33,15 +33,15 @@ const translations = {
     heroTitleHighlight: "AI-powered",
     heroTitleB: "web solutions",
     heroSub:
-      "Build Eleven helps founders and teams launch, automate, and scale. I design and build custom websites, then layer in practical AI that actually saves you time.",
-    servicesTitle: "What I can help you build",
+      "Build Eleven helps founders and teams launch, automate, and scale. We design and build custom websites, then layer in practical AI that actually saves you time.",
+    servicesTitle: "What we can help you build",
     servicesSub:
-      "Three ways I work with teams: launch something new, add AI, or keep what you have running smoothly.",
+      "Three ways we work with teams: launch something new, add AI, or keep what you have running smoothly.",
     services: [
       {
         title: "AI Implementation",
         description:
-          "I integrate AI into your product or workflow. Think chatbots, automation, and smart features that save you hours every week.",
+          "We integrate AI into your product or workflow. Think chatbots, automation, and smart features that save you hours every week.",
       },
       {
         title: "Web Building",
@@ -56,16 +56,16 @@ const translations = {
     ],
     whyTitle: "Why work with Build Eleven?",
     whySub:
-      "I combine technical execution with product thinking, so you get a site or tool that works for your users and your business.",
+      "We combine technical execution with product thinking, so you get a site or tool that works for your users and your business.",
     reasons: [
-      { title: "Product-minded", description: "I focus on outcomes, not just output. Every feature is tied to a business goal." },
-      { title: "AI, practically", description: "No hype. I implement AI where it genuinely removes friction or creates value." },
+      { title: "Product-minded", description: "We focus on outcomes, not just output. Every feature is tied to a business goal." },
+      { title: "AI, practically", description: "No hype. We implement AI where it genuinely removes friction or creates value." },
       { title: "Ship fast", description: "Lean sprints, clear communication, and working demos early in the process." },
-      { title: "Long-term partner", description: "I stick around for support, iteration, and scaling after launch." },
+      { title: "Long-term partner", description: "We stick around for support, iteration, and scaling after launch." },
     ],
     bookTitle: "Let's talk about your project",
     bookSub:
-      "Tell me what you're building. I'll get back to you within one business day to set up a free 30-minute call.",
+      "Tell us what you're building. We'll get back to you within one business day to set up a free 30-minute call.",
     contactUs: "Contact Us",
     footerRights: "All rights reserved.",
     langLabel: "Language",
