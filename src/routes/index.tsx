@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 import logoBlack from "@/assets/build-eleven-logo-black.png.asset.json";
 import logoWhite from "@/assets/build-eleven-logo-white.png.asset.json";
+import { ChatWidget } from "@/components/chat-widget";
 import {
   Bot,
   Calendar,
@@ -193,6 +194,7 @@ function Index() {
         <Booking t={t} />
       </main>
       <Footer t={t} />
+      <ChatWidget lang={lang} />
     </div>
   );
 }
