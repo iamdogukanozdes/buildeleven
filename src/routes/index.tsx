@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 
+import logoBlack from "@/assets/build-eleven-logo-black.png.asset.json";
 import logoWhite from "@/assets/build-eleven-logo-white.png.asset.json";
 import {
   Bot,
@@ -10,8 +11,12 @@ import {
   Headphones,
   Mail,
   Menu,
+  Moon,
+  Sun,
   X,
 } from "lucide-react";
+
+type Theme = "dark" | "light";
 
 const CONTACT_EMAIL = "info@buildeleven.com";
 
