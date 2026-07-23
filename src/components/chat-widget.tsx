@@ -7,9 +7,9 @@ type Msg = { role: "user" | "assistant"; content: string };
 
 const COPY = {
   en: {
-    title: "Chat with Build Eleven",
+    title: "Scorpio from Build Eleven",
     subtitle: "Ask about AI, web, or booking a call.",
-    greeting: "Hey! I'm the Build Eleven assistant. Curious about AI for your product, a new website, or want to book a free call? Ask away.",
+    greeting: "Hey! I'm Scorpio, the assistant at Build Eleven. Curious about AI for your product, a new website, or want to book a free call? Ask away.",
     placeholder: "Type your message...",
     send: "Send",
     open: "Open chat",
@@ -17,9 +17,9 @@ const COPY = {
     error: "Something went wrong. Please try again.",
   },
   nl: {
-    title: "Chat met Build Eleven",
+    title: "Scorpio van Build Eleven",
     subtitle: "Vraag over AI, web of een gesprek plannen.",
-    greeting: "Hoi! Ik ben de assistent van Build Eleven. Vragen over AI voor je product, een nieuwe website, of wil je een gratis gesprek plannen? Stel gerust je vraag.",
+    greeting: "Hoi! Ik ben Scorpio, de assistent van Build Eleven. Vragen over AI voor je product, een nieuwe website, of wil je een gratis gesprek plannen? Stel gerust je vraag.",
     placeholder: "Typ je bericht...",
     send: "Verstuur",
     open: "Open chat",
