@@ -211,7 +211,15 @@ function Index() {
       </main>
       <Footer t={t} />
       <ChatWidget lang={lang} />
-      <BookingPopup isOpen={bookingOpen} onClose={() => setBookingOpen(false)} title={t.ctaBook} />
+      <BookingPopup
+        isOpen={bookingOpen}
+        onClose={() => setBookingOpen(false)}
+        title={t.ctaBook}
+        ready={t.bookingPopupReady}
+        text={t.bookingPopupText}
+        openLabel={t.bookingPopupOpen}
+        powered={t.bookingPopupPowered}
+      />
       <ContactPopup isOpen={contactOpen} onClose={() => setContactOpen(false)} title={t.contactUs} lang={lang} />
     </div>
   );
