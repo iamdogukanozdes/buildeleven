@@ -3,7 +3,9 @@ import { useEffect, useState } from "react";
 
 import logoBlack from "@/assets/build-eleven-logo-black.png.asset.json";
 import logoWhite from "@/assets/build-eleven-logo-white.png.asset.json";
+import { BookingPopup } from "@/components/booking-popup";
 import { ChatWidget } from "@/components/chat-widget";
+import { ContactPopup } from "@/components/contact-popup";
 import {
   Bot,
   Calendar,
@@ -68,6 +70,11 @@ const translations = {
     bookSub:
       "Tell us what you're building. We'll get back to you within one business day to set up a free 30-minute call.",
     contactUs: "Contact Us",
+    bookingPopupReady: "Ready to chat?",
+    bookingPopupText:
+      "Pick a time that works for you through Calendly. It opens in a new tab so you can book without leaving the site.",
+    bookingPopupOpen: "Open Calendly",
+    bookingPopupPowered: "Powered by Calendly",
     footerRights: "All rights reserved.",
     langLabel: "Language",
     themeToggle: "Toggle theme",
@@ -116,6 +123,11 @@ const translations = {
     bookSub:
       "Vertel ons wat je bouwt. We reageren binnen één werkdag om een gratis gesprek van 30 minuten in te plannen.",
     contactUs: "Neem contact op",
+    bookingPopupReady: "Klaar om te sparren?",
+    bookingPopupText:
+      "Kies een tijd die jou uitkomt via Calendly. Het opent in een nieuw tabblad zodat je kunt boeken zonder de site te verlaten.",
+    bookingPopupOpen: "Open Calendly",
+    bookingPopupPowered: "Mogelijk gemaakt door Calendly",
     footerRights: "Alle rechten voorbehouden.",
     langLabel: "Taal",
     themeToggle: "Thema wisselen",
@@ -151,6 +163,8 @@ function Index() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [lang, setLang] = useState<Lang>("en");
   const [theme, setTheme] = useState<Theme>("dark");
+  const [bookingOpen, setBookingOpen] = useState(false);
+  const [contactOpen, setContactOpen] = useState(false);
 
   useEffect(() => {
     const storedLang = typeof window !== "undefined" ? (localStorage.getItem("lang") as Lang | null) : null;
@@ -186,15 +200,27 @@ function Index() {
         mobileMenuOpen={mobileMenuOpen}
         setMobileMenuOpen={setMobileMenuOpen}
         onToggleTheme={toggleTheme}
+        onOpenBooking={() => setBookingOpen(true)}
+        onOpenContact={() => setContactOpen(true)}
       />
       <main className="flex-1">
-        <Hero t={t} />
+        <Hero t={t} onOpenBooking={() => setBookingOpen(true)} onOpenContact={() => setContactOpen(true)} />
         <Services t={t} />
-        <WhyMe t={t} />
-        <Booking t={t} />
+        <WhyMe t={t} onOpenBooking={() => setBookingOpen(true)} />
+        <Booking t={t} onOpenContact={() => setContactOpen(true)} />
       </main>
       <Footer t={t} />
       <ChatWidget lang={lang} />
+      <BookingPopup
+        isOpen={bookingOpen}
+        onClose={() => setBookingOpen(false)}
+        title={t.ctaBook}
+        ready={t.bookingPopupReady}
+        text={t.bookingPopupText}
+        openLabel={t.bookingPopupOpen}
+        powered={t.bookingPopupPowered}
+      />
+      <ContactPopup isOpen={contactOpen} onClose={() => setContactOpen(false)} title={t.contactUs} lang={lang} />
     </div>
   );
 }
@@ -248,6 +274,8 @@ function Header({
   mobileMenuOpen,
   setMobileMenuOpen,
   onToggleTheme,
+  onOpenBooking,
+  onOpenContact,
 }: {
   t: T;
   lang: Lang;
@@ -255,6 +283,8 @@ function Header({
   mobileMenuOpen: boolean;
   setMobileMenuOpen: (open: boolean) => void;
   onToggleTheme: () => void;
+  onOpenBooking: () => void;
+  onOpenContact: () => void;
 }) {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/80 backdrop-blur-md">
@@ -299,12 +329,13 @@ function Header({
         <div className="hidden items-center gap-3 md:flex">
           <LangSwitcher lang={lang} setLang={setLang} t={t} />
           <ThemeToggle onToggle={onToggleTheme} t={t} />
-          <a
-            href="#book"
+          <button
+            type="button"
+            onClick={onOpenBooking}
             className="inline-flex items-center justify-center rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-all hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/20"
           >
             {t.ctaBook}
-          </a>
+          </button>
         </div>
 
         <div className="flex items-center gap-2 md:hidden">
@@ -334,13 +365,16 @@ function Header({
             <a href="#book" className="text-base font-medium text-muted-foreground transition-colors hover:text-foreground" onClick={() => setMobileMenuOpen(false)}>
               {t.nav.book}
             </a>
-            <a
-              href="#book"
+            <button
+              type="button"
+              onClick={() => {
+                setMobileMenuOpen(false);
+                onOpenBooking();
+              }}
               className="mt-2 inline-flex items-center justify-center rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground"
-              onClick={() => setMobileMenuOpen(false)}
             >
               {t.ctaBook}
-            </a>
+            </button>
           </nav>
         </div>
       )}
@@ -348,7 +382,7 @@ function Header({
   );
 }
 
-function Hero({ t }: { t: T }) {
+function Hero({ t, onOpenBooking, onOpenContact }: { t: T; onOpenBooking: () => void; onOpenContact: () => void }) {
   return (
     <section className="relative overflow-hidden px-4 pb-20 pt-16 sm:px-6 sm:pt-24 lg:px-8 lg:pt-32">
       <div className="absolute inset-0 -z-10">
@@ -384,19 +418,21 @@ function Hero({ t }: { t: T }) {
         </p>
 
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <a
-            href="#book"
+          <button
+            type="button"
+            onClick={onOpenBooking}
             className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-3.5 text-base font-semibold text-primary-foreground transition-all hover:bg-primary/90 hover:shadow-xl hover:shadow-primary/20"
           >
             <Calendar className="h-4 w-4" aria-hidden="true" />
             {t.ctaBookStrategy}
-          </a>
-          <a
-            href="#services"
+          </button>
+          <button
+            type="button"
+            onClick={onOpenContact}
             className="inline-flex items-center justify-center rounded-full border border-border bg-surface px-7 py-3.5 text-base font-semibold text-surface-foreground transition-colors hover:bg-muted"
           >
-            {t.ctaExplore}
-          </a>
+            {t.contactUs}
+          </button>
         </div>
       </div>
     </section>
@@ -446,7 +482,7 @@ function Services({ t }: { t: T }) {
   );
 }
 
-function WhyMe({ t }: { t: T }) {
+function WhyMe({ t, onOpenBooking }: { t: T; onOpenBooking: () => void }) {
   return (
     <section id="why" className="bg-surface px-4 py-20 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-6xl">
@@ -456,12 +492,13 @@ function WhyMe({ t }: { t: T }) {
               {t.whyTitle}
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">{t.whySub}</p>
-            <a
-              href="#book"
+            <button
+              type="button"
+              onClick={onOpenBooking}
               className="mt-8 inline-flex items-center justify-center rounded-full bg-primary px-7 py-3.5 text-base font-semibold text-primary-foreground transition-all hover:bg-primary/90 hover:shadow-xl hover:shadow-primary/20"
             >
               {t.ctaBook}
-            </a>
+            </button>
           </div>
 
           <div className="grid gap-6 sm:grid-cols-2">
@@ -481,7 +518,7 @@ function WhyMe({ t }: { t: T }) {
   );
 }
 
-function Booking({ t }: { t: T }) {
+function Booking({ t, onOpenContact }: { t: T; onOpenContact: () => void }) {
   return (
     <section id="book" className="px-4 py-20 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-3xl text-center">
@@ -493,13 +530,14 @@ function Booking({ t }: { t: T }) {
         </p>
 
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <a
-            href={`mailto:${CONTACT_EMAIL}?subject=Project%20inquiry`}
+          <button
+            type="button"
+            onClick={onOpenContact}
             className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-3.5 text-base font-semibold text-primary-foreground transition-all hover:bg-primary/90 hover:shadow-xl hover:shadow-primary/20"
           >
             <Mail className="h-4 w-4" aria-hidden="true" />
             {t.contactUs}
-          </a>
+          </button>
         </div>
       </div>
     </section>
