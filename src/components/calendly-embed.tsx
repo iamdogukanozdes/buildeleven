@@ -53,9 +53,9 @@ export function CalendlyEmbed({ url }: CalendlyEmbedProps) {
   }, [url]);
 
   return (
-    <div className="relative w-full overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
+    <div className="relative w-full rounded-2xl border border-border bg-card shadow-sm">
       {isLoading && (
-        <div className="absolute inset-0 z-10 flex items-center justify-center bg-card">
+        <div className="absolute inset-0 z-10 flex items-center justify-center rounded-2xl bg-card">
           <div className="flex items-center gap-3 text-muted-foreground">
             <div className="h-5 w-5 animate-spin rounded-full border-2 border-primary border-t-transparent" />
             <span className="text-sm font-medium">Loading calendar…</span>
@@ -64,7 +64,8 @@ export function CalendlyEmbed({ url }: CalendlyEmbedProps) {
       )}
       <div
         ref={containerRef}
-        className="min-h-[1100px] w-full sm:min-h-[900px] lg:min-h-[720px]"
+        className="w-full min-h-[1400px] sm:min-h-[1150px] md:min-h-[1050px] lg:min-h-[820px]"
+        style={{ minWidth: "320px" }}
         aria-label="Calendly scheduling widget"
       />
     </div>
