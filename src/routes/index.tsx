@@ -123,6 +123,11 @@ const translations = {
     bookSub:
       "Vertel ons wat je bouwt. We reageren binnen één werkdag om een gratis gesprek van 30 minuten in te plannen.",
     contactUs: "Neem contact op",
+    bookingPopupReady: "Klaar om te sparren?",
+    bookingPopupText:
+      "Kies een tijd die jou uitkomt via Calendly. Het opent in een nieuw tabblad zodat je kunt boeken zonder de site te verlaten.",
+    bookingPopupOpen: "Open Calendly",
+    bookingPopupPowered: "Mogelijk gemaakt door Calendly",
     footerRights: "Alle rechten voorbehouden.",
     langLabel: "Taal",
     themeToggle: "Thema wisselen",
