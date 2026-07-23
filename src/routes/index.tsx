@@ -69,6 +69,7 @@ const translations = {
     emailCta: (email: string) => `Email ${email}`,
     footerRights: "All rights reserved.",
     langLabel: "Language",
+    themeToggle: "Toggle theme",
   },
   nl: {
     nav: { services: "Diensten", why: "Waarom ik", book: "Plan een gesprek" },
