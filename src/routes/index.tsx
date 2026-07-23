@@ -256,6 +256,8 @@ function Header({
   mobileMenuOpen,
   setMobileMenuOpen,
   onToggleTheme,
+  onOpenBooking,
+  onOpenContact,
 }: {
   t: T;
   lang: Lang;
@@ -263,6 +265,8 @@ function Header({
   mobileMenuOpen: boolean;
   setMobileMenuOpen: (open: boolean) => void;
   onToggleTheme: () => void;
+  onOpenBooking: () => void;
+  onOpenContact: () => void;
 }) {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/80 backdrop-blur-md">
