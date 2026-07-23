@@ -153,6 +153,8 @@ function Index() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [lang, setLang] = useState<Lang>("en");
   const [theme, setTheme] = useState<Theme>("dark");
+  const [bookingOpen, setBookingOpen] = useState(false);
+  const [contactOpen, setContactOpen] = useState(false);
 
   useEffect(() => {
     const storedLang = typeof window !== "undefined" ? (localStorage.getItem("lang") as Lang | null) : null;
@@ -188,15 +190,19 @@ function Index() {
         mobileMenuOpen={mobileMenuOpen}
         setMobileMenuOpen={setMobileMenuOpen}
         onToggleTheme={toggleTheme}
+        onOpenBooking={() => setBookingOpen(true)}
+        onOpenContact={() => setContactOpen(true)}
       />
       <main className="flex-1">
-        <Hero t={t} />
+        <Hero t={t} onOpenBooking={() => setBookingOpen(true)} onOpenContact={() => setContactOpen(true)} />
         <Services t={t} />
-        <WhyMe t={t} />
-        <Booking t={t} />
+        <WhyMe t={t} onOpenBooking={() => setBookingOpen(true)} />
+        <Booking t={t} onOpenContact={() => setContactOpen(true)} />
       </main>
       <Footer t={t} />
       <ChatWidget lang={lang} />
+      <BookingPopup isOpen={bookingOpen} onClose={() => setBookingOpen(false)} title={t.ctaBook} />
+      <ContactPopup isOpen={contactOpen} onClose={() => setContactOpen(false)} title={t.contactUs} lang={lang} />
     </div>
   );
 }
