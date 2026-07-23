@@ -149,15 +149,30 @@ export const Route = createFileRoute("/")({
 function Index() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [lang, setLang] = useState<Lang>("en");
+  const [theme, setTheme] = useState<Theme>("dark");
 
   useEffect(() => {
-    const stored = typeof window !== "undefined" ? (localStorage.getItem("lang") as Lang | null) : null;
-    if (stored === "en" || stored === "nl") setLang(stored);
+    const storedLang = typeof window !== "undefined" ? (localStorage.getItem("lang") as Lang | null) : null;
+    if (storedLang === "en" || storedLang === "nl") setLang(storedLang);
+
+    const storedTheme = typeof window !== "undefined" ? (localStorage.getItem("theme") as Theme | null) : null;
+    const isDark = storedTheme !== "light";
+    setTheme(isDark ? "dark" : "light");
+    document.documentElement.classList.toggle("dark", isDark);
   }, []);
 
   useEffect(() => {
     if (typeof window !== "undefined") localStorage.setItem("lang", lang);
   }, [lang]);
+
+  const toggleTheme = () => {
+    const next = theme === "dark" ? "light" : "dark";
+    setTheme(next);
+    if (typeof window !== "undefined") {
+      localStorage.setItem("theme", next);
+      document.documentElement.classList.toggle("dark", next === "dark");
+    }
+  };
 
   const t = translations[lang];
 
@@ -169,6 +184,7 @@ function Index() {
         setLang={setLang}
         mobileMenuOpen={mobileMenuOpen}
         setMobileMenuOpen={setMobileMenuOpen}
+        onToggleTheme={toggleTheme}
       />
       <main className="flex-1">
         <Hero t={t} />
