@@ -358,16 +358,22 @@ function Booking() {
     <section id="book" className="px-4 py-20 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-3xl text-center">
         <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-          Book a 30-minute demo
+          Let&apos;s talk about your project
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-balance text-lg text-muted-foreground">
-          Tell me what you&apos;re building. I&apos;ll share how we can get it
-          live with the right web foundation and AI where it matters.
+          Tell me what you&apos;re building. I&apos;ll get back to you within one
+          business day to set up a free 30-minute call.
         </p>
-      </div>
 
-      <div className="mx-auto mt-12 max-w-3xl">
-        <CalendlyEmbed url={CALENDLY_URL} />
+        <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <a
+            href={`mailto:${CONTACT_EMAIL}?subject=Project%20inquiry`}
+            className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-3.5 text-base font-semibold text-primary-foreground transition-all hover:bg-primary/90 hover:shadow-xl hover:shadow-primary/20"
+          >
+            <Mail className="h-4 w-4" aria-hidden="true" />
+            Email {CONTACT_EMAIL}
+          </a>
+        </div>
       </div>
     </section>
   );
