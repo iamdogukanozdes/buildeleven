@@ -511,10 +511,11 @@ function WhyMe({ t, onOpenBooking }: { t: T; onOpenBooking: () => void }) {
           </div>
 
           <div className="grid gap-6 sm:grid-cols-2">
-            {t.reasons.map((reason) => (
+            {t.reasons.map((reason, i) => (
               <div
                 key={reason.title}
-                className="rounded-2xl border border-border bg-background p-5 transition-all hover:-translate-y-0.5 hover:shadow-md"
+                className="reveal spotlight rounded-2xl border border-border bg-background p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10"
+                style={{ ["--reveal-delay" as string]: `${i * 80}ms` }}
               >
                 <h3 className="text-lg font-semibold text-foreground">{reason.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{reason.description}</p>
