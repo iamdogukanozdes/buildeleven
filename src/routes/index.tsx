@@ -388,17 +388,20 @@ function Hero({ t, onOpenBooking, onOpenContact }: { t: T; onOpenBooking: () => 
   return (
     <section className="relative overflow-hidden px-4 pb-20 pt-16 sm:px-6 sm:pt-24 lg:px-8 lg:pt-32">
       <div className="absolute inset-0 -z-10">
-        <div className="absolute left-1/2 top-0 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-hero-glow blur-3xl" />
-        <div className="absolute bottom-0 right-0 h-[500px] w-[500px] translate-x-1/3 translate-y-1/3 rounded-full bg-hero-ring/50 blur-3xl" />
+        <div className="absolute left-1/2 top-0 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-hero-glow blur-3xl animate-float-slow" />
+        <div className="absolute bottom-0 right-0 h-[500px] w-[500px] translate-x-1/3 translate-y-1/3 rounded-full bg-hero-ring/50 blur-3xl animate-float-slow-alt" />
       </div>
 
       <div className="mx-auto max-w-4xl text-center">
-        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-1.5 text-sm font-medium text-surface-foreground shadow-sm">
+        <div className="reveal mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-1.5 text-sm font-medium text-surface-foreground shadow-sm">
           <Cpu className="h-4 w-4 text-accent" aria-hidden="true" />
           <span>{t.heroBadge}</span>
         </div>
 
-        <h1 className="text-balance text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+        <h1
+          className="reveal text-balance text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl"
+          style={{ ["--reveal-delay" as string]: "80ms" }}
+        >
           {t.heroTitleA}{" "}
           <span className="relative inline-block">
             {t.heroTitleHighlight}
@@ -415,7 +418,10 @@ function Hero({ t, onOpenBooking, onOpenContact }: { t: T; onOpenBooking: () => 
           {t.heroTitleB}
         </h1>
 
-        <p className="mx-auto mt-6 max-w-2xl text-balance text-lg leading-relaxed text-muted-foreground sm:text-xl">
+        <p
+          className="reveal mx-auto mt-6 max-w-2xl text-balance text-lg leading-relaxed text-muted-foreground sm:text-xl"
+          style={{ ["--reveal-delay" as string]: "160ms" }}
+        >
           {t.heroSub}
         </p>
 
