@@ -34,78 +34,79 @@ const translations = {
     ctaBook: "Book a call",
     ctaBookStrategy: "Book a free strategy call",
     ctaExplore: "Explore services",
-    heroBadge: "For founders & modern teams",
-    heroTitleA: "AI powered",
-    heroTitleHighlight: "web solutions",
-    heroTitleB: "that ship fast",
+    heroBadge: "For small businesses & busy founders",
+    heroTitleA: "A website and",
+    heroTitleHighlight: "AI solutions",
+    heroTitleB: "for your business",
     heroSub:
-      "Build Eleven helps founders and teams launch, automate, and scale. We design and build custom websites, then layer in practical AI that actually saves you time.",
+      "No website yet? Too busy to build one? Outdated and losing customers? We build it for you. Modern, fast, and ready to bring in real business. AI included where it saves you real hours.",
     stats: [
-      { value: "40+", label: "Projects shipped" },
-      { value: "24/7", label: "Support availability" },
-      { value: "100%", label: "Custom builds" },
-      { value: "5+", label: "Years experience" },
+      { value: "2 wks", label: "Average time to launch" },
+      { value: "24/7", label: "Support after launch" },
+      { value: "100%", label: "Built for your business" },
+      { value: "0", label: "Tech headaches for you" },
     ],
-    servicesTitle: "What we can help you build",
+    servicesTitle: "What we do for you",
     servicesSub:
-      "Three ways we work with teams: launch something new, add AI, or keep what you have running smoothly.",
+      "Everything you need to get online, look sharp, and let AI handle the busywork. You focus on customers, we handle the tech.",
     services: [
       {
-        title: "AI Implementation",
+        title: "Websites for New Businesses",
         description:
-          "We integrate AI into your product or workflow. Think chatbots, automation, and smart features that save you hours every week.",
+          "Starting out and need a website that actually gets you customers? We design and build it end to end. You show up, we ship.",
       },
       {
-        title: "Web Building",
+        title: "AI That Saves You Time",
         description:
-          "Custom websites and web apps built for performance, conversion, and easy maintenance. From landing pages to full-stack products.",
+          "Chatbots, automations, and smart tools that handle repetitive work. Answer clients faster, capture more leads, spend less time in your inbox.",
       },
       {
-        title: "Ongoing Support",
+        title: "Updates & Ongoing Support",
         description:
-          "Reliable support, updates, and optimization so your site keeps working as your business grows.",
+          "Got an old website that no longer reflects your business? We refresh it and keep it running smoothly so you never have to think about it.",
       },
     ],
-    whyTitle: "Why work with Build Eleven?",
+    whyTitle: "Why business owners pick us",
     whySub:
-      "We combine technical execution with product thinking, so you get a site or tool that works for your users and your business.",
+      "You want a professional online presence without becoming a developer. We make that easy, fast, and stress-free.",
     reasons: [
-      { title: "Product-minded", description: "We focus on outcomes, not just output. Every feature is tied to a business goal." },
-      { title: "AI, practically", description: "No hype. We implement AI where it genuinely removes friction or creates value." },
-      { title: "Ship fast", description: "Lean sprints, clear communication, and working demos early in the process." },
-      { title: "Long-term partner", description: "We stick around for support, iteration, and scaling after launch." },
+      { title: "You stay focused", description: "We handle the tech from start to finish. You keep running your business." },
+      { title: "Built to bring in clients", description: "Every page is designed to turn visitors into real leads and bookings." },
+      { title: "Live in weeks, not months", description: "Most sites go live within two to four weeks. No endless back and forth." },
+      { title: "We stick around", description: "Need a change or an update? Send a message. We handle it." },
     ],
-    bookTitle: "Let's talk about your project",
-    testimonialsTitle: "Trusted by teams that ship",
+    bookTitle: "Let's talk about your business",
+    testimonialsTitle: "Trusted by small businesses",
     testimonialsSub:
-      "Founders and product teams work with us to launch faster and turn AI hype into real outcomes.",
+      "Owners who didn't have the time or the tech skills to build it themselves. Now they have a site that works for them.",
     testimonials: [
       {
         quote:
-          "Build Eleven rebuilt our marketing site in three weeks and plugged in an AI assistant that now handles most of our inbound questions. Bookings went up almost immediately.",
+          "We had no website and no time to build one. Build Eleven took over completely and delivered something we're proud to share. New client bookings started coming in the first week.",
         name: "Sanne de Vries",
-        role: "Founder, Northlane Studio",
+        role: "Owner, Northlane Studio",
       },
       {
         quote:
-          "They understand product, not just code. Every sprint shipped something we could actually show customers, and the AI workflow they built saves our team a full day every week.",
+          "Our old site was five years out of date and embarrassing. They rebuilt it and added an AI assistant that answers customer questions day and night. Huge relief.",
         name: "Marcus Klein",
-        role: "COO, Payloop",
+        role: "Founder, Payloop",
       },
       {
         quote:
-          "The best web partner we've had. Fast, clear communication and a site that finally converts. Support has been rock solid since launch.",
+          "We're a small team and can't afford to babysit a website. Build Eleven set everything up, keeps it running, and we finally look as professional online as we are in person.",
         name: "Amira Hassan",
-        role: "Head of Growth, Trailkit",
+        role: "Owner, Trailkit",
       },
     ],
-    resultsTitle: "Results our clients see",
+    resultsTitle: "What our clients get",
     results: [
-      { value: "3×", label: "Faster launch than agency average" },
-      { value: "40%", label: "Lift in qualified inbound leads" },
-      { value: "8h", label: "Saved per week with AI workflows" },
-      { value: "99.9%", label: "Uptime on managed sites" },
+      { value: "2-4 wks", label: "From first call to live site" },
+      { value: "40%", label: "More inbound leads on average" },
+      { value: "8h", label: "Saved per week with AI" },
+      { value: "0", label: "Tech skills required from you" },
     ],
+
     
     bookSub:
       "Tell us what you're building. We'll get back to you within one business day to set up a free 30-minute call.",
