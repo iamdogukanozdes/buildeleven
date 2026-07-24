@@ -41,11 +41,12 @@ const translations = {
     heroSub:
       "No website yet? Too busy to build one? Outdated and losing customers? We build it for you. Modern, fast, and ready to bring in real business. AI included where it saves you real hours.",
     stats: [
-      { value: "2 wks", label: "Average time to launch" },
-      { value: "24/7", label: "Support after launch" },
-      { value: "100%", label: "Built for your business" },
-      { value: "0", label: "Tech headaches for you" },
+      { value: "9+", label: "Years of experience" },
+      { value: "32+", label: "Projects completed" },
+      { value: "98%", label: "Satisfied clients" },
+      { value: "10+", label: "Industries served" },
     ],
+
     servicesTitle: "What we do for you",
     servicesSub:
       "Everything you need to get online, look sharp, and let AI handle the busywork. You focus on customers, we handle the tech.",
@@ -133,11 +134,12 @@ const translations = {
     heroSub:
       "Nog geen website? Geen tijd om er zelf een te bouwen? Verouderd en verlies je klanten? Wij bouwen het voor je. Modern, snel en klaar om echt klanten binnen te halen. AI erbij waar het je uren scheelt.",
     stats: [
-      { value: "2 wkn", label: "Gemiddelde tijd tot live" },
-      { value: "24/7", label: "Support na de lancering" },
-      { value: "100%", label: "Gebouwd voor jouw bedrijf" },
-      { value: "0", label: "Technische zorgen voor jou" },
+      { value: "9+", label: "Jaar ervaring" },
+      { value: "32+", label: "Projecten afgerond" },
+      { value: "98%", label: "Tevreden klanten" },
+      { value: "10+", label: "Industrieën bediend" },
     ],
+
     servicesTitle: "Wat wij voor je doen",
     servicesSub:
       "Alles wat je nodig hebt om online te staan, er scherp uit te zien en AI het routinewerk te laten doen. Jij focust op klanten, wij op de techniek.",
@@ -747,9 +749,12 @@ function Footer({ t }: { t: T }) {
           </span>
           Build Eleven
         </div>
-        <p className="text-sm text-muted-foreground">
-          © {new Date().getFullYear()} Build Eleven. {t.footerRights}
+        <p className="text-sm text-muted-foreground text-center sm:text-right">
+          © {new Date().getFullYear()} Build Eleven by Dogukan Ozdes · USA & Netherlands
+          <br />
+          <span className="text-xs">{t.footerRights}</span>
         </p>
+
       </div>
     </footer>
   );
