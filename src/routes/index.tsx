@@ -468,12 +468,13 @@ function Services({ t }: { t: T }) {
             return (
               <div
                 key={service.title}
-                className={`group relative rounded-2xl border p-6 transition-all hover:-translate-y-1 hover:shadow-lg sm:p-8 ${
+                className={`reveal spotlight group relative rounded-2xl border p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/10 sm:p-8 ${
                   highlight ? "border-primary/20 bg-primary/5" : "border-border bg-surface"
                 }`}
+                style={{ ["--reveal-delay" as string]: `${i * 100}ms` }}
               >
                 <div
-                  className={`mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl ${
+                  className={`mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3 ${
                     highlight ? "bg-primary text-primary-foreground" : "bg-muted text-foreground"
                   }`}
                 >
