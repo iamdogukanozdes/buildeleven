@@ -216,23 +216,24 @@ const translations = {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Build Eleven | AI-Powered Web Solutions" },
+      { title: "Build Eleven | Websites & AI for Small Businesses" },
       {
         name: "description",
         content:
-          "Build Eleven helps founders and teams launch, automate, and scale with custom websites and practical AI integrations. Book a free strategy call.",
+          "No website, no time, or an outdated one? Build Eleven builds modern websites and AI solutions for small businesses and busy founders. Book a free call.",
       },
       {
         property: "og:title",
-        content: "Build Eleven | AI-Powered Web Solutions",
+        content: "Build Eleven | Websites & AI for Small Businesses",
       },
       {
         property: "og:description",
         content:
-          "Custom websites and practical AI integrations for growing businesses. Book a free strategy call.",
+          "We build websites and AI solutions for business owners who don't have the time to do it themselves. Book a free strategy call.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+
     ],
   }),
   component: Index,
