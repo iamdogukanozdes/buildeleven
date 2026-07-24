@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import type { LucideIcon } from "lucide-react";
 
 import logoBlack from "@/assets/build-eleven-11-dark.png.asset.json";
 import logoWhite from "@/assets/build-eleven-11-light.png.asset.json";
