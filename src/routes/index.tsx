@@ -109,7 +109,8 @@ const translations = {
 
     
     bookSub:
-      "Tell us what you're building. We'll get back to you within one business day to set up a free 30-minute call.",
+      "Tell us about your business. We'll get back within one business day to set up a free 30-minute call. No pressure, no jargon.",
+
     contactUs: "Contact Us",
     bookingPopupReady: "Ready to chat?",
     bookingPopupText:
