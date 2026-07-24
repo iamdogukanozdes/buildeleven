@@ -29,15 +29,21 @@ type Lang = "en" | "nl";
 const translations = {
   en: {
     nav: { services: "Services", why: "Why us", book: "Book a call" },
-    ctaBook: "Book a free call",
+    ctaBook: "Book a call",
     ctaBookStrategy: "Book a free strategy call",
     ctaExplore: "Explore services",
-    heroBadge: "AI implementation + web development",
-    heroTitleA: "Build smarter with",
-    heroTitleHighlight: "AI-powered",
-    heroTitleB: "web solutions",
+    heroBadge: "For founders & modern teams",
+    heroTitleA: "AI powered",
+    heroTitleHighlight: "web solutions",
+    heroTitleB: "that ship fast",
     heroSub:
       "Build Eleven helps founders and teams launch, automate, and scale. We design and build custom websites, then layer in practical AI that actually saves you time.",
+    stats: [
+      { value: "40+", label: "Projects shipped" },
+      { value: "24/7", label: "Support availability" },
+      { value: "100%", label: "Custom builds" },
+      { value: "5+", label: "Years experience" },
+    ],
     servicesTitle: "What we can help you build",
     servicesSub:
       "Three ways we work with teams: launch something new, add AI, or keep what you have running smoothly.",
@@ -82,15 +88,21 @@ const translations = {
   },
   nl: {
     nav: { services: "Diensten", why: "Waarom wij", book: "Plan een gesprek" },
-    ctaBook: "Plan een gratis gesprek",
+    ctaBook: "Plan een gesprek",
     ctaBookStrategy: "Plan een gratis strategiegesprek",
     ctaExplore: "Bekijk diensten",
-    heroBadge: "AI-implementatie + webontwikkeling",
-    heroTitleA: "Bouw slimmer met",
-    heroTitleHighlight: "AI-gedreven",
-    heroTitleB: "weboplossingen",
+    heroBadge: "Voor oprichters & moderne teams",
+    heroTitleA: "AI-gedreven",
+    heroTitleHighlight: "weboplossingen",
+    heroTitleB: "die snel live gaan",
     heroSub:
       "Build Eleven helpt oprichters en teams lanceren, automatiseren en schalen. Wij ontwerpen en bouwen maatwerk websites en voegen praktische AI toe die je écht tijd bespaart.",
+    stats: [
+      { value: "40+", label: "Projecten gelanceerd" },
+      { value: "24/7", label: "Support beschikbaar" },
+      { value: "100%", label: "Maatwerk" },
+      { value: "5+", label: "Jaar ervaring" },
+    ],
     servicesTitle: "Waar we je mee kunnen helpen",
     servicesSub:
       "Drie manieren waarop we met teams werken: iets nieuws lanceren, AI toevoegen, of houden wat je hebt soepel draaiende.",
