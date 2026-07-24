@@ -77,10 +77,10 @@ export function CursorFx() {
     <div
       ref={glowRef}
       aria-hidden="true"
-      className="pointer-events-none fixed left-0 top-0 z-[60] h-[420px] w-[420px] rounded-full opacity-70 mix-blend-screen"
+      className="pointer-events-none fixed left-0 top-0 z-[60] h-[200px] w-[200px] rounded-full opacity-100 mix-blend-screen blur-lg"
       style={{
         background:
-          "radial-gradient(circle, color-mix(in oklab, var(--primary) 30%, transparent) 0%, transparent 60%)",
+          "radial-gradient(circle, color-mix(in oklab, var(--primary) 70%, transparent) 0%, color-mix(in oklab, var(--primary) 30%, transparent) 40%, transparent 65%)",
         willChange: "transform",
       }}
     />
