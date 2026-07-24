@@ -6,6 +6,7 @@ import logoWhite from "@/assets/build-eleven-logo-white.png.asset.json";
 import { BookingPopup } from "@/components/booking-popup";
 import { ChatWidget } from "@/components/chat-widget";
 import { ContactPopup } from "@/components/contact-popup";
+import { CursorFx } from "@/components/cursor-fx";
 import {
   Bot,
   Calendar,
