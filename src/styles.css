@@ -65,6 +65,7 @@
   --color-surface-foreground: var(--surface-foreground);
   --font-sans: var(--font-sans);
   --font-heading: var(--font-heading);
+  --font-display: var(--font-display);
 }
 
 :root {
