@@ -290,68 +290,61 @@ function Header({
 }) {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/80 backdrop-blur-md">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link to="/" className="flex items-center gap-2 text-xl font-bold tracking-tight text-foreground">
-          <span className="relative h-9 w-9">
-            <img
-              src={logoBlack.url}
-              alt="Build Eleven logo"
-              className="absolute inset-0 h-full w-full object-contain block dark:hidden"
-            />
-            <img
-              src={logoWhite.url}
-              alt="Build Eleven logo"
-              className="absolute inset-0 h-full w-full object-contain hidden dark:block"
-            />
-          </span>
-          Build Eleven
-        </Link>
-
-        <nav className="hidden items-center gap-1 rounded-xl border border-border/50 bg-background/30 p-1 backdrop-blur-sm md:flex">
-          <a
-            href="#services"
-            className="rounded-lg px-4 py-1.5 text-sm font-medium text-foreground/80 transition-all duration-200 hover:bg-muted hover:text-foreground active:scale-95"
-          >
-            {t.nav.services}
-          </a>
-          <a
-            href="#why"
-            className="rounded-lg px-4 py-1.5 text-sm font-medium text-foreground/80 transition-all duration-200 hover:bg-muted hover:text-foreground active:scale-95"
-          >
-            {t.nav.why}
-          </a>
-          <a
-            href="#book"
-            className="rounded-lg px-4 py-1.5 text-sm font-medium text-foreground/80 transition-all duration-200 hover:bg-muted hover:text-foreground active:scale-95"
-          >
-            {t.nav.book}
-          </a>
-        </nav>
-
-        <div className="hidden items-center gap-3 md:flex">
-          <LangSwitcher lang={lang} setLang={setLang} t={t} />
-          <ThemeToggle onToggle={onToggleTheme} t={t} />
-          <button
-            type="button"
-            onClick={onOpenBooking}
-            className="inline-flex items-center justify-center rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-all hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/20"
-          >
-            {t.ctaBook}
-          </button>
+      <div className="mx-auto grid h-16 max-w-7xl grid-cols-[1fr_auto_1fr] items-center px-4 sm:px-6 lg:px-8">
+        {/* Left: mark */}
+        <div className="flex items-center gap-2">
+          <Link to="/" className="group inline-flex h-10 w-10 items-center justify-center rounded-full border border-border/70 bg-surface/60 transition-transform hover:scale-105" aria-label="Build Eleven home">
+            <span className="relative h-6 w-6">
+              <img src={logoBlack.url} alt="" className="absolute inset-0 h-full w-full object-contain block dark:hidden" />
+              <img src={logoWhite.url} alt="" className="absolute inset-0 h-full w-full object-contain hidden dark:block" />
+            </span>
+          </Link>
         </div>
 
-        <div className="flex items-center gap-2 md:hidden">
-          <LangSwitcher lang={lang} setLang={setLang} t={t} />
-          <ThemeToggle onToggle={onToggleTheme} t={t} />
-          <button
-            type="button"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-foreground"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
-            aria-expanded={mobileMenuOpen}
-          >
-            {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
+        {/* Center: wordmark */}
+        <Link to="/" className="flex items-center justify-center">
+          <span className="font-display text-lg tracking-tight text-foreground sm:text-xl">
+            BUILD<span className="text-primary">11</span>
+          </span>
+        </Link>
+
+        {/* Right: nav + actions */}
+        <div className="flex items-center justify-end gap-3">
+          <nav className="hidden items-center gap-1 rounded-full border border-border/50 bg-background/30 p-1 backdrop-blur-sm md:flex">
+            <a href="#services" className="rounded-full px-3.5 py-1.5 text-sm font-medium text-foreground/80 transition-all hover:bg-muted hover:text-foreground active:scale-95">
+              {t.nav.services}
+            </a>
+            <a href="#why" className="rounded-full px-3.5 py-1.5 text-sm font-medium text-foreground/80 transition-all hover:bg-muted hover:text-foreground active:scale-95">
+              {t.nav.why}
+            </a>
+            <a href="#book" className="rounded-full px-3.5 py-1.5 text-sm font-medium text-foreground/80 transition-all hover:bg-muted hover:text-foreground active:scale-95">
+              {t.nav.book}
+            </a>
+          </nav>
+          <div className="hidden items-center gap-2 md:flex">
+            <LangSwitcher lang={lang} setLang={setLang} t={t} />
+            <ThemeToggle onToggle={onToggleTheme} t={t} />
+            <button
+              type="button"
+              onClick={onOpenBooking}
+              className="inline-flex items-center justify-center rounded-full bg-foreground px-5 py-2.5 text-sm font-semibold text-background transition-all hover:opacity-90 hover:shadow-lg"
+            >
+              {t.ctaBook}
+            </button>
+          </div>
+
+          <div className="flex items-center gap-2 md:hidden">
+            <ThemeToggle onToggle={onToggleTheme} t={t} />
+            <button
+              type="button"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-foreground"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={mobileMenuOpen}
+            >
+              {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -367,13 +360,14 @@ function Header({
             <a href="#book" className="text-base font-medium text-muted-foreground transition-colors hover:text-foreground" onClick={() => setMobileMenuOpen(false)}>
               {t.nav.book}
             </a>
+            <div className="pt-2"><LangSwitcher lang={lang} setLang={setLang} t={t} /></div>
             <button
               type="button"
               onClick={() => {
                 setMobileMenuOpen(false);
                 onOpenBooking();
               }}
-              className="mt-2 inline-flex items-center justify-center rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground"
+              className="mt-2 inline-flex items-center justify-center rounded-full bg-foreground px-5 py-2.5 text-sm font-semibold text-background"
             >
               {t.ctaBook}
             </button>
@@ -386,50 +380,39 @@ function Header({
 
 function Hero({ t, onOpenBooking, onOpenContact }: { t: T; onOpenBooking: () => void; onOpenContact: () => void }) {
   return (
-    <section className="relative overflow-hidden px-4 pb-20 pt-16 sm:px-6 sm:pt-24 lg:px-8 lg:pt-32">
+    <section className="relative overflow-hidden px-4 pb-24 pt-14 sm:px-6 sm:pt-20 lg:px-8 lg:pt-28">
       <div className="absolute inset-0 -z-10">
         <div className="absolute left-1/2 top-0 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-hero-glow blur-3xl animate-float-slow" />
         <div className="absolute bottom-0 right-0 h-[500px] w-[500px] translate-x-1/3 translate-y-1/3 rounded-full bg-hero-ring/50 blur-3xl animate-float-slow-alt" />
       </div>
 
-      <div className="mx-auto max-w-4xl text-center">
-        <div className="reveal mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-1.5 text-sm font-medium text-surface-foreground shadow-sm">
-          <Cpu className="h-4 w-4 text-accent" aria-hidden="true" />
+      <div className="mx-auto max-w-6xl text-center">
+        <div className="reveal mb-8 inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-surface-foreground shadow-sm">
+          <Cpu className="h-3.5 w-3.5 text-primary" aria-hidden="true" />
           <span>{t.heroBadge}</span>
         </div>
 
         <h1
-          className="reveal text-balance text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl"
+          className="reveal font-display text-balance uppercase leading-[0.92] tracking-tight text-foreground text-5xl sm:text-7xl md:text-8xl lg:text-[8rem]"
           style={{ ["--reveal-delay" as string]: "80ms" }}
         >
           {t.heroTitleA}{" "}
-          <span className="relative inline-block">
-            {t.heroTitleHighlight}
-            <svg
-              className="absolute -bottom-2 left-0 w-full text-accent"
-              viewBox="0 0 300 12"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
-            >
-              <path d="M2 8.5C50 2 250 2 298 8.5" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
-            </svg>
-          </span>{" "}
+          <span className="text-primary">{t.heroTitleHighlight}</span>{" "}
           {t.heroTitleB}
         </h1>
 
         <p
-          className="reveal mx-auto mt-6 max-w-2xl text-balance text-lg leading-relaxed text-muted-foreground sm:text-xl"
+          className="reveal mx-auto mt-8 max-w-2xl text-balance text-base leading-relaxed text-muted-foreground sm:text-lg"
           style={{ ["--reveal-delay" as string]: "160ms" }}
         >
           {t.heroSub}
         </p>
 
-        <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <button
             type="button"
             onClick={onOpenBooking}
-            className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-3.5 text-base font-semibold text-primary-foreground transition-all hover:bg-primary/90 hover:shadow-xl hover:shadow-primary/20"
+            className="inline-flex items-center justify-center gap-2 rounded-full bg-foreground px-8 py-4 text-base font-semibold text-background transition-all hover:opacity-90 hover:shadow-xl"
           >
             <Calendar className="h-4 w-4" aria-hidden="true" />
             {t.ctaBookStrategy}
@@ -437,7 +420,7 @@ function Hero({ t, onOpenBooking, onOpenContact }: { t: T; onOpenBooking: () => 
           <button
             type="button"
             onClick={onOpenContact}
-            className="inline-flex items-center justify-center rounded-full border border-border bg-surface px-7 py-3.5 text-base font-semibold text-surface-foreground transition-colors hover:bg-muted"
+            className="inline-flex items-center justify-center rounded-full border border-border bg-transparent px-8 py-4 text-base font-semibold text-foreground transition-colors hover:bg-muted"
           >
             {t.contactUs}
           </button>
