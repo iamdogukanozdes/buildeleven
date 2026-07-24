@@ -515,35 +515,8 @@ function Hero({ t, onOpenBooking, onOpenContact }: { t: T; onOpenBooking: () => 
         </div>
 
         {/* Right: orbit visual */}
-        <div className="reveal relative mx-auto aspect-square w-full max-w-md lg:max-w-lg" style={{ ["--reveal-delay" as string]: "220ms" }}>
-          <div className="absolute inset-0 rounded-full border border-primary/15" />
-          <div className="absolute inset-[12%] rounded-full border border-primary/20" />
-          <div className="absolute inset-[24%] rounded-full border border-primary/25" />
-          <div className="absolute inset-[36%] rounded-full border border-primary/30" />
-          <div className="absolute left-1/2 top-1/2 h-32 w-32 -translate-x-1/2 -translate-y-1/2 rounded-2xl border border-primary/40 bg-primary/10 shadow-2xl shadow-primary/30 backdrop-blur-sm sm:h-36 sm:w-36">
-            <div className="flex h-full w-full items-center justify-center">
-              <span className="relative h-14 w-14 sm:h-16 sm:w-16">
-                <img src={logoBlack.url} alt="" className="absolute inset-0 h-full w-full object-contain block dark:hidden" />
-                <img src={logoWhite.url} alt="" className="absolute inset-0 h-full w-full object-contain hidden dark:block" />
-              </span>
-            </div>
-          </div>
-          {platformIcons.map((Icon, i) => {
-            const angle = (i / platformIcons.length) * Math.PI * 2 - Math.PI / 2;
-            const radius = 44; // % from center
-            const x = 50 + Math.cos(angle) * radius;
-            const y = 50 + Math.sin(angle) * radius;
-            return (
-              <div
-                key={i}
-                className="absolute flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-2xl border border-border bg-surface/80 text-foreground shadow-lg backdrop-blur-sm transition-transform hover:scale-110 sm:h-16 sm:w-16"
-                style={{ left: `${x}%`, top: `${y}%` }}
-              >
-                <Icon className="h-6 w-6 sm:h-7 sm:w-7" aria-hidden="true" />
-              </div>
-            );
-          })}
-        </div>
+        <OrbitVisual icons={platformIcons} onOpenBooking={onOpenBooking} />
+
       </div>
 
       {/* Stats row */}
