@@ -74,6 +74,37 @@ const translations = {
       { title: "Long-term partner", description: "We stick around for support, iteration, and scaling after launch." },
     ],
     bookTitle: "Let's talk about your project",
+    testimonialsTitle: "Trusted by teams that ship",
+    testimonialsSub:
+      "Founders and product teams work with us to launch faster and turn AI hype into real outcomes.",
+    testimonials: [
+      {
+        quote:
+          "Build Eleven rebuilt our marketing site in three weeks and plugged in an AI assistant that now handles most of our inbound questions. Bookings went up almost immediately.",
+        name: "Sanne de Vries",
+        role: "Founder, Northlane Studio",
+      },
+      {
+        quote:
+          "They understand product, not just code. Every sprint shipped something we could actually show customers, and the AI workflow they built saves our team a full day every week.",
+        name: "Marcus Klein",
+        role: "COO, Payloop",
+      },
+      {
+        quote:
+          "The best web partner we've had. Fast, clear communication and a site that finally converts. Support has been rock solid since launch.",
+        name: "Amira Hassan",
+        role: "Head of Growth, Trailkit",
+      },
+    ],
+    resultsTitle: "Results our clients see",
+    results: [
+      { value: "3×", label: "Faster launch than agency average" },
+      { value: "40%", label: "Lift in qualified inbound leads" },
+      { value: "8h", label: "Saved per week with AI workflows" },
+      { value: "99.9%", label: "Uptime on managed sites" },
+    ],
+    bookTitleOriginal: "Let's talk about your project",
     bookSub:
       "Tell us what you're building. We'll get back to you within one business day to set up a free 30-minute call.",
     contactUs: "Contact Us",
