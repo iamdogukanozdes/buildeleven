@@ -104,7 +104,7 @@ const translations = {
       { value: "8h", label: "Saved per week with AI workflows" },
       { value: "99.9%", label: "Uptime on managed sites" },
     ],
-    bookTitleOriginal: "Let's talk about your project",
+    
     bookSub:
       "Tell us what you're building. We'll get back to you within one business day to set up a free 30-minute call.",
     contactUs: "Contact Us",
