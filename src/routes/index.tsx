@@ -393,7 +393,7 @@ function Hero({ t, onOpenBooking, onOpenContact }: { t: T; onOpenBooking: () => 
         </div>
 
         <h1
-          className="reveal font-display text-balance uppercase leading-[0.9] tracking-tight text-foreground text-[15vw] sm:text-[12vw] lg:text-[9.5rem] xl:text-[11rem]"
+          className="reveal font-display text-balance uppercase leading-[0.92] tracking-tight text-foreground text-6xl sm:text-7xl md:text-8xl lg:text-[8rem]"
           style={{ ["--reveal-delay" as string]: "80ms" }}
         >
           {t.heroTitleA}{" "}
