@@ -16,6 +16,8 @@ import {
   Mail,
   Menu,
   Moon,
+  Quote,
+  Star,
   Sun,
   X,
 } from "lucide-react";
