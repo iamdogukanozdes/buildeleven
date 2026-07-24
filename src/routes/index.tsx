@@ -1,8 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 
-import logoBlack from "@/assets/build-eleven-logo-black.png.asset.json";
-import logoWhite from "@/assets/build-eleven-logo-white.png.asset.json";
+import logoBlack from "@/assets/build-eleven-11-dark.png.asset.json";
+import logoWhite from "@/assets/build-eleven-11-light.png.asset.json";
 import { BookingPopup } from "@/components/booking-popup";
 import { ChatWidget } from "@/components/chat-widget";
 import { ContactPopup } from "@/components/contact-popup";
