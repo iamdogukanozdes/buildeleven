@@ -637,6 +637,65 @@ function WhyMe({ t, onOpenBooking }: { t: T; onOpenBooking: () => void }) {
   );
 }
 
+function Testimonials({ t }: { t: T }) {
+  return (
+    <section id="testimonials" className="px-4 py-20 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-6xl">
+        <div className="mb-12 text-center">
+          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            {t.testimonialsTitle}
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-balance text-lg text-muted-foreground">
+            {t.testimonialsSub}
+          </p>
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-3">
+          {t.testimonials.map((item, i) => (
+            <figure
+              key={item.name}
+              className="reveal spotlight relative flex flex-col rounded-2xl border border-border bg-surface p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/10 sm:p-7"
+              style={{ ["--reveal-delay" as string]: `${i * 100}ms` }}
+            >
+              <Quote className="mb-4 h-7 w-7 text-primary/70" aria-hidden="true" />
+              <div className="mb-4 flex gap-0.5 text-primary">
+                {Array.from({ length: 5 }).map((_, s) => (
+                  <Star key={s} className="h-4 w-4 fill-current" aria-hidden="true" />
+                ))}
+              </div>
+              <blockquote className="flex-1 text-base leading-relaxed text-foreground/90">
+                &ldquo;{item.quote}&rdquo;
+              </blockquote>
+              <figcaption className="mt-6 border-t border-border/60 pt-4">
+                <div className="text-sm font-semibold text-foreground">{item.name}</div>
+                <div className="text-sm text-muted-foreground">{item.role}</div>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+
+        <div className="mt-16">
+          <h3 className="text-center text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+            {t.resultsTitle}
+          </h3>
+          <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-4">
+            {t.results.map((r, i) => (
+              <div
+                key={r.label}
+                className="reveal rounded-2xl border border-border bg-surface/60 p-5 text-center backdrop-blur-sm"
+                style={{ ["--reveal-delay" as string]: `${i * 80}ms` }}
+              >
+                <div className="font-display text-3xl font-bold text-primary sm:text-4xl">{r.value}</div>
+                <div className="mt-1 text-sm text-muted-foreground">{r.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Booking({ t, onOpenContact }: { t: T; onOpenContact: () => void }) {
   return (
     <section id="book" className="px-4 py-20 sm:px-6 lg:px-8">
