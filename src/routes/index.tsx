@@ -16,6 +16,8 @@ import {
   Mail,
   Menu,
   Moon,
+  Quote,
+  Star,
   Sun,
   X,
 } from "lucide-react";
@@ -74,6 +76,37 @@ const translations = {
       { title: "Long-term partner", description: "We stick around for support, iteration, and scaling after launch." },
     ],
     bookTitle: "Let's talk about your project",
+    testimonialsTitle: "Trusted by teams that ship",
+    testimonialsSub:
+      "Founders and product teams work with us to launch faster and turn AI hype into real outcomes.",
+    testimonials: [
+      {
+        quote:
+          "Build Eleven rebuilt our marketing site in three weeks and plugged in an AI assistant that now handles most of our inbound questions. Bookings went up almost immediately.",
+        name: "Sanne de Vries",
+        role: "Founder, Northlane Studio",
+      },
+      {
+        quote:
+          "They understand product, not just code. Every sprint shipped something we could actually show customers, and the AI workflow they built saves our team a full day every week.",
+        name: "Marcus Klein",
+        role: "COO, Payloop",
+      },
+      {
+        quote:
+          "The best web partner we've had. Fast, clear communication and a site that finally converts. Support has been rock solid since launch.",
+        name: "Amira Hassan",
+        role: "Head of Growth, Trailkit",
+      },
+    ],
+    resultsTitle: "Results our clients see",
+    results: [
+      { value: "3×", label: "Faster launch than agency average" },
+      { value: "40%", label: "Lift in qualified inbound leads" },
+      { value: "8h", label: "Saved per week with AI workflows" },
+      { value: "99.9%", label: "Uptime on managed sites" },
+    ],
+    
     bookSub:
       "Tell us what you're building. We'll get back to you within one business day to set up a free 30-minute call.",
     contactUs: "Contact Us",
@@ -131,6 +164,36 @@ const translations = {
       { title: "AI, praktisch", description: "Geen hype. Wij implementeren AI waar het echt frictie wegneemt of waarde creëert." },
       { title: "Snel leveren", description: "Slanke sprints, heldere communicatie en werkende demo's vroeg in het proces." },
       { title: "Lange termijn partner", description: "Wij blijven betrokken voor support, iteratie en schaalvergroting na de lancering." },
+    ],
+    testimonialsTitle: "Vertrouwd door teams die leveren",
+    testimonialsSub:
+      "Oprichters en productteams werken met ons om sneller te lanceren en AI-hype om te zetten in echte resultaten.",
+    testimonials: [
+      {
+        quote:
+          "Build Eleven bouwde onze marketingsite opnieuw in drie weken en integreerde een AI-assistent die nu de meeste inbound vragen afhandelt. Bookings gingen bijna direct omhoog.",
+        name: "Sanne de Vries",
+        role: "Oprichter, Northlane Studio",
+      },
+      {
+        quote:
+          "Zij begrijpen product, niet alleen code. Elke sprint leverde iets op dat we konden tonen aan klanten, en de AI-workflow bespaart ons team een volle dag per week.",
+        name: "Marcus Klein",
+        role: "COO, Payloop",
+      },
+      {
+        quote:
+          "De beste webpartner die we hebben gehad. Snelle, heldere communicatie en een site die eindelijk converteert. Support is sinds de lancering rotsvast.",
+        name: "Amira Hassan",
+        role: "Head of Growth, Trailkit",
+      },
+    ],
+    resultsTitle: "Resultaten die onze klanten zien",
+    results: [
+      { value: "3×", label: "Sneller live dan gemiddeld bureau" },
+      { value: "40%", label: "Meer gekwalificeerde inbound leads" },
+      { value: "8u", label: "Bespaard per week met AI-workflows" },
+      { value: "99,9%", label: "Uptime op beheerde sites" },
     ],
     bookTitle: "Laten we het over je project hebben",
     bookSub:
@@ -220,6 +283,7 @@ function Index() {
         <Hero t={t} onOpenBooking={() => setBookingOpen(true)} onOpenContact={() => setContactOpen(true)} />
         <Services t={t} />
         <WhyMe t={t} onOpenBooking={() => setBookingOpen(true)} />
+        <Testimonials t={t} />
         <Booking t={t} onOpenContact={() => setContactOpen(true)} />
       </main>
       <Footer t={t} />
@@ -566,6 +630,65 @@ function WhyMe({ t, onOpenBooking }: { t: T; onOpenBooking: () => void }) {
               >
                 <h3 className="text-lg font-semibold text-foreground">{reason.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{reason.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Testimonials({ t }: { t: T }) {
+  return (
+    <section id="testimonials" className="px-4 py-20 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-6xl">
+        <div className="mb-12 text-center">
+          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            {t.testimonialsTitle}
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-balance text-lg text-muted-foreground">
+            {t.testimonialsSub}
+          </p>
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-3">
+          {t.testimonials.map((item, i) => (
+            <figure
+              key={item.name}
+              className="reveal spotlight relative flex flex-col rounded-2xl border border-border bg-surface p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/10 sm:p-7"
+              style={{ ["--reveal-delay" as string]: `${i * 100}ms` }}
+            >
+              <Quote className="mb-4 h-7 w-7 text-primary/70" aria-hidden="true" />
+              <div className="mb-4 flex gap-0.5 text-primary">
+                {Array.from({ length: 5 }).map((_, s) => (
+                  <Star key={s} className="h-4 w-4 fill-current" aria-hidden="true" />
+                ))}
+              </div>
+              <blockquote className="flex-1 text-base leading-relaxed text-foreground/90">
+                &ldquo;{item.quote}&rdquo;
+              </blockquote>
+              <figcaption className="mt-6 border-t border-border/60 pt-4">
+                <div className="text-sm font-semibold text-foreground">{item.name}</div>
+                <div className="text-sm text-muted-foreground">{item.role}</div>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+
+        <div className="mt-16">
+          <h3 className="text-center text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+            {t.resultsTitle}
+          </h3>
+          <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-4">
+            {t.results.map((r, i) => (
+              <div
+                key={r.label}
+                className="reveal rounded-2xl border border-border bg-surface/60 p-5 text-center backdrop-blur-sm"
+                style={{ ["--reveal-delay" as string]: `${i * 80}ms` }}
+              >
+                <div className="font-display text-3xl font-bold text-primary sm:text-4xl">{r.value}</div>
+                <div className="mt-1 text-sm text-muted-foreground">{r.label}</div>
               </div>
             ))}
           </div>
