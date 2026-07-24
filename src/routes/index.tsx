@@ -29,15 +29,21 @@ type Lang = "en" | "nl";
 const translations = {
   en: {
     nav: { services: "Services", why: "Why us", book: "Book a call" },
-    ctaBook: "Book a free call",
+    ctaBook: "Book a call",
     ctaBookStrategy: "Book a free strategy call",
     ctaExplore: "Explore services",
-    heroBadge: "AI implementation + web development",
-    heroTitleA: "Build smarter with",
-    heroTitleHighlight: "AI-powered",
-    heroTitleB: "web solutions",
+    heroBadge: "For founders & modern teams",
+    heroTitleA: "AI powered",
+    heroTitleHighlight: "web solutions",
+    heroTitleB: "that ship fast",
     heroSub:
       "Build Eleven helps founders and teams launch, automate, and scale. We design and build custom websites, then layer in practical AI that actually saves you time.",
+    stats: [
+      { value: "40+", label: "Projects shipped" },
+      { value: "24/7", label: "Support availability" },
+      { value: "100%", label: "Custom builds" },
+      { value: "5+", label: "Years experience" },
+    ],
     servicesTitle: "What we can help you build",
     servicesSub:
       "Three ways we work with teams: launch something new, add AI, or keep what you have running smoothly.",
@@ -82,15 +88,21 @@ const translations = {
   },
   nl: {
     nav: { services: "Diensten", why: "Waarom wij", book: "Plan een gesprek" },
-    ctaBook: "Plan een gratis gesprek",
+    ctaBook: "Plan een gesprek",
     ctaBookStrategy: "Plan een gratis strategiegesprek",
     ctaExplore: "Bekijk diensten",
-    heroBadge: "AI-implementatie + webontwikkeling",
-    heroTitleA: "Bouw slimmer met",
-    heroTitleHighlight: "AI-gedreven",
-    heroTitleB: "weboplossingen",
+    heroBadge: "Voor oprichters & moderne teams",
+    heroTitleA: "AI-gedreven",
+    heroTitleHighlight: "weboplossingen",
+    heroTitleB: "die snel live gaan",
     heroSub:
       "Build Eleven helpt oprichters en teams lanceren, automatiseren en schalen. Wij ontwerpen en bouwen maatwerk websites en voegen praktische AI toe die je écht tijd bespaart.",
+    stats: [
+      { value: "40+", label: "Projecten gelanceerd" },
+      { value: "24/7", label: "Support beschikbaar" },
+      { value: "100%", label: "Maatwerk" },
+      { value: "5+", label: "Jaar ervaring" },
+    ],
     servicesTitle: "Waar we je mee kunnen helpen",
     servicesSub:
       "Drie manieren waarop we met teams werken: iets nieuws lanceren, AI toevoegen, of houden wat je hebt soepel draaiende.",
@@ -290,34 +302,30 @@ function Header({
 }) {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/80 backdrop-blur-md">
-      <div className="mx-auto grid h-16 max-w-7xl grid-cols-[1fr_auto_1fr] items-center px-4 sm:px-6 lg:px-8">
-        {/* Left: mark */}
-        <div className="flex items-center gap-2">
-          <Link to="/" className="group inline-flex h-10 w-10 items-center justify-center rounded-full border border-border/70 bg-surface/60 transition-transform hover:scale-105" aria-label="Build Eleven home">
-            <span className="relative h-6 w-6">
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+        {/* Left: mark + wordmark */}
+        <Link to="/" className="flex items-center gap-2.5" aria-label="Build Eleven home">
+          <span className="relative inline-flex h-9 w-9 items-center justify-center rounded-lg border border-border/70 bg-surface/60">
+            <span className="relative h-5 w-5">
               <img src={logoBlack.url} alt="" className="absolute inset-0 h-full w-full object-contain block dark:hidden" />
               <img src={logoWhite.url} alt="" className="absolute inset-0 h-full w-full object-contain hidden dark:block" />
             </span>
-          </Link>
-        </div>
-
-        {/* Center: wordmark */}
-        <Link to="/" className="flex items-center justify-center">
-          <span className="font-display text-lg tracking-tight text-foreground sm:text-xl">
+          </span>
+          <span className="font-display text-base font-bold tracking-tight text-foreground sm:text-lg">
             BUILD<span className="text-primary">11</span>
           </span>
         </Link>
 
         {/* Right: nav + actions */}
-        <div className="flex items-center justify-end gap-3">
-          <nav className="hidden items-center gap-1 rounded-full border border-border/50 bg-background/30 p-1 backdrop-blur-sm md:flex">
-            <a href="#services" className="rounded-full px-3.5 py-1.5 text-sm font-medium text-foreground/80 transition-all hover:bg-muted hover:text-foreground active:scale-95">
+        <div className="flex items-center gap-3">
+          <nav className="hidden items-center gap-1 md:flex">
+            <a href="#services" className="rounded-full px-3.5 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
               {t.nav.services}
             </a>
-            <a href="#why" className="rounded-full px-3.5 py-1.5 text-sm font-medium text-foreground/80 transition-all hover:bg-muted hover:text-foreground active:scale-95">
+            <a href="#why" className="rounded-full px-3.5 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
               {t.nav.why}
             </a>
-            <a href="#book" className="rounded-full px-3.5 py-1.5 text-sm font-medium text-foreground/80 transition-all hover:bg-muted hover:text-foreground active:scale-95">
+            <a href="#book" className="rounded-full px-3.5 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
               {t.nav.book}
             </a>
           </nav>
@@ -327,7 +335,7 @@ function Header({
             <button
               type="button"
               onClick={onOpenBooking}
-              className="inline-flex items-center justify-center rounded-full bg-foreground px-5 py-2.5 text-sm font-semibold text-background transition-all hover:opacity-90 hover:shadow-lg"
+              className="inline-flex items-center justify-center rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/20 transition-all hover:bg-primary/90 hover:shadow-primary/30"
             >
               {t.ctaBook}
             </button>
@@ -347,6 +355,7 @@ function Header({
           </div>
         </div>
       </div>
+
 
       {mobileMenuOpen && (
         <div className="border-t border-border/60 bg-background px-4 py-4 md:hidden">
@@ -379,56 +388,111 @@ function Header({
 }
 
 function Hero({ t, onOpenBooking, onOpenContact }: { t: T; onOpenBooking: () => void; onOpenContact: () => void }) {
+  const platformIcons = [Bot, Code2, Cpu, Headphones, Calendar];
   return (
-    <section className="relative overflow-hidden px-4 pb-24 pt-14 sm:px-6 sm:pt-20 lg:px-8 lg:pt-28">
+    <section className="relative overflow-hidden px-4 pb-20 pt-14 sm:px-6 sm:pt-20 lg:px-8 lg:pt-24">
       <div className="absolute inset-0 -z-10">
-        <div className="absolute left-1/2 top-0 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-hero-glow blur-3xl animate-float-slow" />
-        <div className="absolute bottom-0 right-0 h-[500px] w-[500px] translate-x-1/3 translate-y-1/3 rounded-full bg-hero-ring/50 blur-3xl animate-float-slow-alt" />
+        <div className="absolute -left-40 top-0 h-[520px] w-[520px] rounded-full bg-hero-glow blur-3xl animate-float-slow" />
+        <div className="absolute bottom-0 right-0 h-[520px] w-[520px] translate-x-1/4 translate-y-1/4 rounded-full bg-hero-ring/50 blur-3xl animate-float-slow-alt" />
       </div>
 
-      <div className="mx-auto max-w-6xl text-center">
-        <div className="reveal mb-8 inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-surface-foreground shadow-sm">
-          <Cpu className="h-3.5 w-3.5 text-primary" aria-hidden="true" />
-          <span>{t.heroBadge}</span>
+      <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1.15fr_1fr] lg:gap-16">
+        {/* Left: copy */}
+        <div className="text-left">
+          <div className="reveal mb-6 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-foreground">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
+            </span>
+            <span>{t.heroBadge}</span>
+          </div>
+
+          <h1
+            className="reveal font-display text-balance font-bold leading-[1.02] tracking-tight text-foreground text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem]"
+            style={{ ["--reveal-delay" as string]: "80ms" }}
+          >
+            {t.heroTitleA}{" "}
+            <span className="text-primary">{t.heroTitleHighlight}</span>{" "}
+            {t.heroTitleB}
+          </h1>
+
+          <p
+            className="reveal mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg"
+            style={{ ["--reveal-delay" as string]: "160ms" }}
+          >
+            {t.heroSub}
+          </p>
+
+          <div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
+            <button
+              type="button"
+              onClick={onOpenBooking}
+              className="group inline-flex items-center justify-between gap-3 rounded-full bg-primary py-2 pl-2 pr-6 text-base font-semibold text-primary-foreground shadow-xl shadow-primary/20 transition-all hover:shadow-primary/40"
+            >
+              <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-primary-foreground/15 backdrop-blur-sm">
+                <Calendar className="h-4 w-4" aria-hidden="true" />
+              </span>
+              <span className="flex-1 text-center sm:flex-none">{t.ctaBookStrategy}</span>
+            </button>
+            <button
+              type="button"
+              onClick={onOpenContact}
+              className="inline-flex items-center justify-center rounded-full border border-border bg-surface/40 px-6 py-4 text-base font-semibold text-foreground transition-colors hover:bg-muted"
+            >
+              {t.contactUs}
+            </button>
+          </div>
         </div>
 
-        <h1
-          className="reveal font-display text-balance uppercase leading-[0.92] tracking-tight text-foreground text-5xl sm:text-7xl md:text-8xl lg:text-[8rem]"
-          style={{ ["--reveal-delay" as string]: "80ms" }}
-        >
-          {t.heroTitleA}{" "}
-          <span className="text-primary">{t.heroTitleHighlight}</span>{" "}
-          {t.heroTitleB}
-        </h1>
-
-        <p
-          className="reveal mx-auto mt-8 max-w-2xl text-balance text-base leading-relaxed text-muted-foreground sm:text-lg"
-          style={{ ["--reveal-delay" as string]: "160ms" }}
-        >
-          {t.heroSub}
-        </p>
-
-        <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <button
-            type="button"
-            onClick={onOpenBooking}
-            className="inline-flex items-center justify-center gap-2 rounded-full bg-foreground px-8 py-4 text-base font-semibold text-background transition-all hover:opacity-90 hover:shadow-xl"
-          >
-            <Calendar className="h-4 w-4" aria-hidden="true" />
-            {t.ctaBookStrategy}
-          </button>
-          <button
-            type="button"
-            onClick={onOpenContact}
-            className="inline-flex items-center justify-center rounded-full border border-border bg-transparent px-8 py-4 text-base font-semibold text-foreground transition-colors hover:bg-muted"
-          >
-            {t.contactUs}
-          </button>
+        {/* Right: orbit visual */}
+        <div className="reveal relative mx-auto aspect-square w-full max-w-md lg:max-w-lg" style={{ ["--reveal-delay" as string]: "220ms" }}>
+          <div className="absolute inset-0 rounded-full border border-primary/15" />
+          <div className="absolute inset-[12%] rounded-full border border-primary/20" />
+          <div className="absolute inset-[24%] rounded-full border border-primary/25" />
+          <div className="absolute inset-[36%] rounded-full border border-primary/30" />
+          <div className="absolute left-1/2 top-1/2 h-32 w-32 -translate-x-1/2 -translate-y-1/2 rounded-2xl border border-primary/40 bg-primary/10 shadow-2xl shadow-primary/30 backdrop-blur-sm sm:h-36 sm:w-36">
+            <div className="flex h-full w-full items-center justify-center">
+              <span className="relative h-14 w-14 sm:h-16 sm:w-16">
+                <img src={logoBlack.url} alt="" className="absolute inset-0 h-full w-full object-contain block dark:hidden" />
+                <img src={logoWhite.url} alt="" className="absolute inset-0 h-full w-full object-contain hidden dark:block" />
+              </span>
+            </div>
+          </div>
+          {platformIcons.map((Icon, i) => {
+            const angle = (i / platformIcons.length) * Math.PI * 2 - Math.PI / 2;
+            const radius = 44; // % from center
+            const x = 50 + Math.cos(angle) * radius;
+            const y = 50 + Math.sin(angle) * radius;
+            return (
+              <div
+                key={i}
+                className="absolute flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-2xl border border-border bg-surface/80 text-foreground shadow-lg backdrop-blur-sm transition-transform hover:scale-110 sm:h-16 sm:w-16"
+                style={{ left: `${x}%`, top: `${y}%` }}
+              >
+                <Icon className="h-6 w-6 sm:h-7 sm:w-7" aria-hidden="true" />
+              </div>
+            );
+          })}
         </div>
+      </div>
+
+      {/* Stats row */}
+      <div className="mx-auto mt-16 grid max-w-7xl grid-cols-2 gap-4 sm:mt-20 md:grid-cols-4">
+        {t.stats.map((s, i) => (
+          <div
+            key={s.label}
+            className="reveal rounded-2xl border border-border bg-surface/50 p-5 backdrop-blur-sm"
+            style={{ ["--reveal-delay" as string]: `${i * 80}ms` }}
+          >
+            <div className="font-display text-3xl font-bold text-primary sm:text-4xl">{s.value}</div>
+            <div className="mt-1 text-sm text-muted-foreground">{s.label}</div>
+          </div>
+        ))}
       </div>
     </section>
   );
 }
+
 
 function Services({ t }: { t: T }) {
   const icons = [Bot, Code2, Headphones];
