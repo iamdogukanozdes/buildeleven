@@ -178,4 +178,90 @@
   .text-balance {
     text-wrap: balance;
   }
+
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+    will-change: opacity, transform;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+
+  /* Mouse-tracked spotlight overlay on cards */
+  .spotlight {
+    position: relative;
+    isolation: isolate;
+  }
+  .spotlight::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: radial-gradient(
+      380px circle at var(--mx, 50%) var(--my, 50%),
+      color-mix(in oklab, var(--primary) 55%, transparent),
+      transparent 55%
+    );
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .spotlight:hover::before {
+    opacity: 1;
+  }
+  .spotlight::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(
+      260px circle at var(--mx, 50%) var(--my, 50%),
+      color-mix(in oklab, var(--primary) 14%, transparent),
+      transparent 60%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .spotlight:hover::after {
+    opacity: 1;
+  }
+  .spotlight > * {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Slow floating orb animation */
+  @keyframes float-slow {
+    0%, 100% { transform: translate(-50%, -50%) translate3d(0, 0, 0); }
+    50% { transform: translate(-50%, -50%) translate3d(0, -30px, 0); }
+  }
+  @keyframes float-slow-alt {
+    0%, 100% { transform: translate(33%, 33%) translate3d(0, 0, 0); }
+    50% { transform: translate(33%, 33%) translate3d(-20px, 20px, 0); }
+  }
+  .animate-float-slow { animation: float-slow 12s ease-in-out infinite; }
+  .animate-float-slow-alt { animation: float-slow-alt 14s ease-in-out infinite; }
 }
