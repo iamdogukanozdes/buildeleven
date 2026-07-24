@@ -466,8 +466,8 @@ function Hero({ t, onOpenBooking, onOpenContact }: { t: T; onOpenBooking: () => 
             return (
               <div
                 key={i}
-                className="absolute flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-2xl border border-border bg-surface/80 text-foreground shadow-lg backdrop-blur-sm sm:h-16 sm:w-16"
-                style={{ left: `${x}%`, top: `${y}%`, animation: `float-slow ${8 + i}s ease-in-out ${i * 0.4}s infinite` }}
+                className="absolute flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-2xl border border-border bg-surface/80 text-foreground shadow-lg backdrop-blur-sm transition-transform hover:scale-110 sm:h-16 sm:w-16"
+                style={{ left: `${x}%`, top: `${y}%` }}
               >
                 <Icon className="h-6 w-6 sm:h-7 sm:w-7" aria-hidden="true" />
               </div>
