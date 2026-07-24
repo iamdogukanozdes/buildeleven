@@ -281,6 +281,7 @@ function Index() {
         <Hero t={t} onOpenBooking={() => setBookingOpen(true)} onOpenContact={() => setContactOpen(true)} />
         <Services t={t} />
         <WhyMe t={t} onOpenBooking={() => setBookingOpen(true)} />
+        <Testimonials t={t} />
         <Booking t={t} onOpenContact={() => setContactOpen(true)} />
       </main>
       <Footer t={t} />
