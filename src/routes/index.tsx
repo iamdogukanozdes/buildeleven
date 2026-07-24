@@ -590,9 +590,9 @@ function OrbitVisual({ icons, onOpenBooking }: { icons: LucideIcon[]; onOpenBook
         <div className="absolute inset-[24%] rounded-full border border-primary/25" />
         <div className="absolute inset-[36%] rounded-full border border-primary/30" />
 
-        <div className="absolute left-1/2 top-1/2 h-32 w-32 -translate-x-1/2 -translate-y-1/2 rounded-2xl border border-primary/40 bg-primary/10 shadow-2xl shadow-primary/30 backdrop-blur-sm transition-transform duration-300 sm:h-36 sm:w-36">
-          <div className="flex h-full w-full flex-col items-center justify-center gap-1">
-            <span className="relative h-14 w-14 sm:h-16 sm:w-16">
+        <div className="absolute left-1/2 top-1/2 flex h-44 w-44 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-primary/40 bg-primary/10 shadow-2xl shadow-primary/30 backdrop-blur-sm transition-transform duration-300 sm:h-52 sm:w-52 lg:h-60 lg:w-60">
+          <div className="flex h-full w-full flex-col items-center justify-center gap-2">
+            <span className="relative h-20 w-20 sm:h-24 sm:w-24 lg:h-28 lg:w-28">
               <img src={logoBlack.url} alt="" className="absolute inset-0 h-full w-full object-contain block dark:hidden" />
               <img src={logoWhite.url} alt="" className="absolute inset-0 h-full w-full object-contain hidden dark:block" />
             </span>
