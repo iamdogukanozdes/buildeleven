@@ -302,34 +302,30 @@ function Header({
 }) {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/80 backdrop-blur-md">
-      <div className="mx-auto grid h-16 max-w-7xl grid-cols-[1fr_auto_1fr] items-center px-4 sm:px-6 lg:px-8">
-        {/* Left: mark */}
-        <div className="flex items-center gap-2">
-          <Link to="/" className="group inline-flex h-10 w-10 items-center justify-center rounded-full border border-border/70 bg-surface/60 transition-transform hover:scale-105" aria-label="Build Eleven home">
-            <span className="relative h-6 w-6">
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+        {/* Left: mark + wordmark */}
+        <Link to="/" className="flex items-center gap-2.5" aria-label="Build Eleven home">
+          <span className="relative inline-flex h-9 w-9 items-center justify-center rounded-lg border border-border/70 bg-surface/60">
+            <span className="relative h-5 w-5">
               <img src={logoBlack.url} alt="" className="absolute inset-0 h-full w-full object-contain block dark:hidden" />
               <img src={logoWhite.url} alt="" className="absolute inset-0 h-full w-full object-contain hidden dark:block" />
             </span>
-          </Link>
-        </div>
-
-        {/* Center: wordmark */}
-        <Link to="/" className="flex items-center justify-center">
-          <span className="font-display text-lg tracking-tight text-foreground sm:text-xl">
+          </span>
+          <span className="font-display text-base font-bold tracking-tight text-foreground sm:text-lg">
             BUILD<span className="text-primary">11</span>
           </span>
         </Link>
 
         {/* Right: nav + actions */}
-        <div className="flex items-center justify-end gap-3">
-          <nav className="hidden items-center gap-1 rounded-full border border-border/50 bg-background/30 p-1 backdrop-blur-sm md:flex">
-            <a href="#services" className="rounded-full px-3.5 py-1.5 text-sm font-medium text-foreground/80 transition-all hover:bg-muted hover:text-foreground active:scale-95">
+        <div className="flex items-center gap-3">
+          <nav className="hidden items-center gap-1 md:flex">
+            <a href="#services" className="rounded-full px-3.5 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
               {t.nav.services}
             </a>
-            <a href="#why" className="rounded-full px-3.5 py-1.5 text-sm font-medium text-foreground/80 transition-all hover:bg-muted hover:text-foreground active:scale-95">
+            <a href="#why" className="rounded-full px-3.5 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
               {t.nav.why}
             </a>
-            <a href="#book" className="rounded-full px-3.5 py-1.5 text-sm font-medium text-foreground/80 transition-all hover:bg-muted hover:text-foreground active:scale-95">
+            <a href="#book" className="rounded-full px-3.5 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
               {t.nav.book}
             </a>
           </nav>
@@ -339,7 +335,7 @@ function Header({
             <button
               type="button"
               onClick={onOpenBooking}
-              className="inline-flex items-center justify-center rounded-full bg-foreground px-5 py-2.5 text-sm font-semibold text-background transition-all hover:opacity-90 hover:shadow-lg"
+              className="inline-flex items-center justify-center rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/20 transition-all hover:bg-primary/90 hover:shadow-primary/30"
             >
               {t.ctaBook}
             </button>
@@ -359,6 +355,7 @@ function Header({
           </div>
         </div>
       </div>
+
 
       {mobileMenuOpen && (
         <div className="border-t border-border/60 bg-background px-4 py-4 md:hidden">
