@@ -212,6 +212,7 @@ function Index() {
       </main>
       <Footer t={t} />
       <ChatWidget lang={lang} />
+      <CursorFx />
       <BookingPopup
         isOpen={bookingOpen}
         onClose={() => setBookingOpen(false)}
