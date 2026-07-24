@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import type { LucideIcon } from "lucide-react";
 
 import logoBlack from "@/assets/build-eleven-11-dark.png.asset.json";
 import logoWhite from "@/assets/build-eleven-11-light.png.asset.json";
@@ -515,35 +516,8 @@ function Hero({ t, onOpenBooking, onOpenContact }: { t: T; onOpenBooking: () => 
         </div>
 
         {/* Right: orbit visual */}
-        <div className="reveal relative mx-auto aspect-square w-full max-w-md lg:max-w-lg" style={{ ["--reveal-delay" as string]: "220ms" }}>
-          <div className="absolute inset-0 rounded-full border border-primary/15" />
-          <div className="absolute inset-[12%] rounded-full border border-primary/20" />
-          <div className="absolute inset-[24%] rounded-full border border-primary/25" />
-          <div className="absolute inset-[36%] rounded-full border border-primary/30" />
-          <div className="absolute left-1/2 top-1/2 h-32 w-32 -translate-x-1/2 -translate-y-1/2 rounded-2xl border border-primary/40 bg-primary/10 shadow-2xl shadow-primary/30 backdrop-blur-sm sm:h-36 sm:w-36">
-            <div className="flex h-full w-full items-center justify-center">
-              <span className="relative h-14 w-14 sm:h-16 sm:w-16">
-                <img src={logoBlack.url} alt="" className="absolute inset-0 h-full w-full object-contain block dark:hidden" />
-                <img src={logoWhite.url} alt="" className="absolute inset-0 h-full w-full object-contain hidden dark:block" />
-              </span>
-            </div>
-          </div>
-          {platformIcons.map((Icon, i) => {
-            const angle = (i / platformIcons.length) * Math.PI * 2 - Math.PI / 2;
-            const radius = 44; // % from center
-            const x = 50 + Math.cos(angle) * radius;
-            const y = 50 + Math.sin(angle) * radius;
-            return (
-              <div
-                key={i}
-                className="absolute flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-2xl border border-border bg-surface/80 text-foreground shadow-lg backdrop-blur-sm transition-transform hover:scale-110 sm:h-16 sm:w-16"
-                style={{ left: `${x}%`, top: `${y}%` }}
-              >
-                <Icon className="h-6 w-6 sm:h-7 sm:w-7" aria-hidden="true" />
-              </div>
-            );
-          })}
-        </div>
+        <OrbitVisual icons={platformIcons} onOpenBooking={onOpenBooking} />
+
       </div>
 
       {/* Stats row */}
@@ -563,8 +537,109 @@ function Hero({ t, onOpenBooking, onOpenContact }: { t: T; onOpenBooking: () => 
   );
 }
 
+const ORBIT_LABELS = ["AI", "Web", "Automation", "Support", "Booking"];
+
+function OrbitVisual({ icons, onOpenBooking }: { icons: LucideIcon[]; onOpenBooking: () => void }) {
+  const wrapRef = useRef<HTMLDivElement>(null);
+  const [rotation, setRotation] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const [active, setActive] = useState<number | null>(null);
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    if (paused) return;
+    let raf = 0;
+    let last = performance.now();
+    const tick = (now: number) => {
+      const dt = now - last;
+      last = now;
+      setRotation((r) => (r + dt * 0.006) % 360);
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [paused]);
+
+  const onMove = (e: React.MouseEvent) => {
+    const el = wrapRef.current;
+    if (!el) return;
+    const r = el.getBoundingClientRect();
+    const px = (e.clientX - r.left) / r.width - 0.5;
+    const py = (e.clientY - r.top) / r.height - 0.5;
+    setTilt({ x: py * -14, y: px * 14 });
+  };
+
+  return (
+    <div
+      ref={wrapRef}
+      onMouseMove={onMove}
+      onMouseLeave={() => {
+        setTilt({ x: 0, y: 0 });
+        setPaused(false);
+        setActive(null);
+      }}
+      className="reveal relative mx-auto aspect-square w-full max-w-md lg:max-w-lg"
+      style={{ ["--reveal-delay" as string]: "220ms", perspective: "1000px" }}
+    >
+      <div
+        className="absolute inset-0 transition-transform duration-300 ease-out"
+        style={{ transform: `rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`, transformStyle: "preserve-3d" }}
+      >
+        <div className="absolute inset-0 rounded-full border border-primary/15" />
+        <div className="absolute inset-[12%] rounded-full border border-primary/20" />
+        <div className="absolute inset-[24%] rounded-full border border-primary/25" />
+        <div className="absolute inset-[36%] rounded-full border border-primary/30" />
+
+        <div className="absolute left-1/2 top-1/2 h-32 w-32 -translate-x-1/2 -translate-y-1/2 rounded-2xl border border-primary/40 bg-primary/10 shadow-2xl shadow-primary/30 backdrop-blur-sm transition-transform duration-300 sm:h-36 sm:w-36">
+          <div className="flex h-full w-full flex-col items-center justify-center gap-1">
+            <span className="relative h-14 w-14 sm:h-16 sm:w-16">
+              <img src={logoBlack.url} alt="" className="absolute inset-0 h-full w-full object-contain block dark:hidden" />
+              <img src={logoWhite.url} alt="" className="absolute inset-0 h-full w-full object-contain hidden dark:block" />
+            </span>
+            <span className="h-4 text-xs font-medium uppercase tracking-widest text-primary">
+              {active !== null ? ORBIT_LABELS[active] : ""}
+            </span>
+          </div>
+        </div>
+
+        {icons.map((Icon, i) => {
+          const angle = ((i / icons.length) * 360 + rotation - 90) * (Math.PI / 180);
+          const radius = 44;
+          const x = 50 + Math.cos(angle) * radius;
+          const y = 50 + Math.sin(angle) * radius;
+          const isActive = active === i;
+          return (
+            <button
+              key={i}
+              type="button"
+              aria-label={ORBIT_LABELS[i]}
+              onMouseEnter={() => {
+                setPaused(true);
+                setActive(i);
+              }}
+              onFocus={() => {
+                setPaused(true);
+                setActive(i);
+              }}
+              onClick={onOpenBooking}
+              className={`absolute flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-2xl border bg-surface/80 shadow-lg backdrop-blur-sm outline-none transition-[transform,background-color,border-color,box-shadow] duration-200 sm:h-16 sm:w-16 ${
+                isActive
+                  ? "scale-125 border-primary/60 bg-primary text-primary-foreground shadow-primary/40"
+                  : "border-border text-foreground hover:scale-110"
+              }`}
+              style={{ left: `${x}%`, top: `${y}%` }}
+            >
+              <Icon className="h-6 w-6 sm:h-7 sm:w-7" aria-hidden="true" />
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
 
 function Services({ t }: { t: T }) {
+
   const icons = [Bot, Code2, Headphones];
   return (
     <section id="services" className="px-4 py-20 sm:px-6 lg:px-8">
