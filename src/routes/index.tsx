@@ -126,80 +126,81 @@ const translations = {
     ctaBook: "Plan een gesprek",
     ctaBookStrategy: "Plan een gratis strategiegesprek",
     ctaExplore: "Bekijk diensten",
-    heroBadge: "Voor oprichters & moderne teams",
-    heroTitleA: "AI-gedreven",
-    heroTitleHighlight: "weboplossingen",
-    heroTitleB: "die snel live gaan",
+    heroBadge: "Voor kleine bedrijven & drukke ondernemers",
+    heroTitleA: "Een website en",
+    heroTitleHighlight: "AI-oplossingen",
+    heroTitleB: "voor jouw bedrijf",
     heroSub:
-      "Build Eleven helpt oprichters en teams lanceren, automatiseren en schalen. Wij ontwerpen en bouwen maatwerk websites en voegen praktische AI toe die je écht tijd bespaart.",
+      "Nog geen website? Geen tijd om er zelf een te bouwen? Verouderd en verlies je klanten? Wij bouwen het voor je. Modern, snel en klaar om echt klanten binnen te halen. AI erbij waar het je uren scheelt.",
     stats: [
-      { value: "40+", label: "Projecten gelanceerd" },
-      { value: "24/7", label: "Support beschikbaar" },
-      { value: "100%", label: "Maatwerk" },
-      { value: "5+", label: "Jaar ervaring" },
+      { value: "2 wkn", label: "Gemiddelde tijd tot live" },
+      { value: "24/7", label: "Support na de lancering" },
+      { value: "100%", label: "Gebouwd voor jouw bedrijf" },
+      { value: "0", label: "Technische zorgen voor jou" },
     ],
-    servicesTitle: "Waar we je mee kunnen helpen",
+    servicesTitle: "Wat wij voor je doen",
     servicesSub:
-      "Drie manieren waarop we met teams werken: iets nieuws lanceren, AI toevoegen, of houden wat je hebt soepel draaiende.",
+      "Alles wat je nodig hebt om online te staan, er scherp uit te zien en AI het routinewerk te laten doen. Jij focust op klanten, wij op de techniek.",
     services: [
       {
-        title: "AI-implementatie",
+        title: "Websites voor Nieuwe Bedrijven",
         description:
-          "Wij integreren AI in je product of workflow. Dat kan chatbots, automatisering en slimme functies zijn die je wekelijks uren besparen.",
+          "Net begonnen en een website nodig die écht klanten oplevert? Wij ontwerpen en bouwen het van A tot Z. Jij komt opdagen, wij leveren.",
       },
       {
-        title: "Webontwikkeling",
+        title: "AI die je Tijd Bespaart",
         description:
-          "Maatwerk websites en webapps gebouwd voor performance, conversie en eenvoudig onderhoud. Van landingspagina's tot full-stack producten.",
+          "Chatbots, automatiseringen en slimme tools die het herhaalwerk doen. Sneller reageren op klanten, meer leads binnenhalen, minder tijd in je inbox.",
       },
       {
-        title: "Doorlopende Support",
+        title: "Updates & Doorlopende Support",
         description:
-          "Betrouwbare ondersteuning, updates en optimalisatie zodat je site blijft werken terwijl je bedrijf groeit.",
+          "Een oude website die je bedrijf niet meer weerspiegelt? Wij frissen hem op en houden hem draaiend, zodat jij er niet meer aan hoeft te denken.",
       },
     ],
-    whyTitle: "Waarom werken met Build Eleven?",
+    whyTitle: "Waarom ondernemers voor ons kiezen",
     whySub:
-      "Wij combineren technische uitvoering met productdenken, zodat je een site of tool krijgt die werkt voor je gebruikers én je business.",
+      "Jij wilt een professionele online uitstraling zonder zelf ontwikkelaar te worden. Wij maken dat makkelijk, snel en zonder stress.",
     reasons: [
-      { title: "Productgericht", description: "Wij focussen op resultaten, niet alleen op output. Elke functie is gekoppeld aan een businessdoel." },
-      { title: "AI, praktisch", description: "Geen hype. Wij implementeren AI waar het echt frictie wegneemt of waarde creëert." },
-      { title: "Snel leveren", description: "Slanke sprints, heldere communicatie en werkende demo's vroeg in het proces." },
-      { title: "Lange termijn partner", description: "Wij blijven betrokken voor support, iteratie en schaalvergroting na de lancering." },
+      { title: "Jij blijft gefocust", description: "Wij regelen de techniek van begin tot eind. Jij runt je bedrijf." },
+      { title: "Gebouwd om klanten binnen te halen", description: "Elke pagina is ontworpen om bezoekers om te zetten in echte leads en boekingen." },
+      { title: "Live in weken, niet maanden", description: "De meeste sites staan binnen twee tot vier weken live. Geen eindeloos heen en weer." },
+      { title: "Wij blijven betrokken", description: "Iets aanpassen of updaten? Stuur een berichtje. Wij regelen het." },
     ],
-    testimonialsTitle: "Vertrouwd door teams die leveren",
+    testimonialsTitle: "Vertrouwd door kleine bedrijven",
     testimonialsSub:
-      "Oprichters en productteams werken met ons om sneller te lanceren en AI-hype om te zetten in echte resultaten.",
+      "Ondernemers die de tijd of de tech-skills niet hadden om het zelf te bouwen. Nu hebben ze een site die voor hen werkt.",
     testimonials: [
       {
         quote:
-          "Build Eleven bouwde onze marketingsite opnieuw in drie weken en integreerde een AI-assistent die nu de meeste inbound vragen afhandelt. Bookings gingen bijna direct omhoog.",
+          "We hadden geen website en geen tijd om er een te bouwen. Build Eleven nam het volledig over en leverde iets waar we trots op zijn. De eerste week kwamen er al nieuwe boekingen binnen.",
         name: "Sanne de Vries",
-        role: "Oprichter, Northlane Studio",
+        role: "Eigenaar, Northlane Studio",
       },
       {
         quote:
-          "Zij begrijpen product, niet alleen code. Elke sprint leverde iets op dat we konden tonen aan klanten, en de AI-workflow bespaart ons team een volle dag per week.",
+          "Onze oude site was vijf jaar verouderd en gênant. Ze hebben hem opnieuw gebouwd en een AI-assistent toegevoegd die dag en nacht klantvragen beantwoordt. Enorme opluchting.",
         name: "Marcus Klein",
-        role: "COO, Payloop",
+        role: "Oprichter, Payloop",
       },
       {
         quote:
-          "De beste webpartner die we hebben gehad. Snelle, heldere communicatie en een site die eindelijk converteert. Support is sinds de lancering rotsvast.",
+          "We zijn een klein team en kunnen geen website babysitten. Build Eleven heeft alles opgezet, houdt het draaiend, en we zien er online eindelijk net zo professioneel uit als in het echt.",
         name: "Amira Hassan",
-        role: "Head of Growth, Trailkit",
+        role: "Eigenaar, Trailkit",
       },
     ],
-    resultsTitle: "Resultaten die onze klanten zien",
+    resultsTitle: "Wat onze klanten krijgen",
     results: [
-      { value: "3×", label: "Sneller live dan gemiddeld bureau" },
-      { value: "40%", label: "Meer gekwalificeerde inbound leads" },
-      { value: "8u", label: "Bespaard per week met AI-workflows" },
-      { value: "99,9%", label: "Uptime op beheerde sites" },
+      { value: "2-4 wkn", label: "Van eerste gesprek tot live site" },
+      { value: "40%", label: "Meer inbound leads gemiddeld" },
+      { value: "8u", label: "Bespaard per week met AI" },
+      { value: "0", label: "Tech-kennis nodig van jou" },
     ],
-    bookTitle: "Laten we het over je project hebben",
+    bookTitle: "Laten we het over jouw bedrijf hebben",
     bookSub:
-      "Vertel ons wat je bouwt. We reageren binnen één werkdag om een gratis gesprek van 30 minuten in te plannen.",
+      "Vertel ons over je bedrijf. We reageren binnen één werkdag om een gratis gesprek van 30 minuten in te plannen. Geen druk, geen jargon.",
+
     contactUs: "Neem contact op",
     bookingPopupReady: "Klaar om te sparren?",
     bookingPopupText:
