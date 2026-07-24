@@ -41,11 +41,12 @@ const translations = {
     heroSub:
       "No website yet? Too busy to build one? Outdated and losing customers? We build it for you. Modern, fast, and ready to bring in real business. AI included where it saves you real hours.",
     stats: [
-      { value: "2 wks", label: "Average time to launch" },
-      { value: "24/7", label: "Support after launch" },
-      { value: "100%", label: "Built for your business" },
-      { value: "0", label: "Tech headaches for you" },
+      { value: "9+", label: "Years of experience" },
+      { value: "32+", label: "Projects completed" },
+      { value: "98%", label: "Satisfied clients" },
+      { value: "10+", label: "Industries served" },
     ],
+
     servicesTitle: "What we do for you",
     servicesSub:
       "Everything you need to get online, look sharp, and let AI handle the busywork. You focus on customers, we handle the tech.",
