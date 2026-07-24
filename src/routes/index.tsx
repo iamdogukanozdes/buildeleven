@@ -163,6 +163,36 @@ const translations = {
       { title: "Snel leveren", description: "Slanke sprints, heldere communicatie en werkende demo's vroeg in het proces." },
       { title: "Lange termijn partner", description: "Wij blijven betrokken voor support, iteratie en schaalvergroting na de lancering." },
     ],
+    testimonialsTitle: "Vertrouwd door teams die leveren",
+    testimonialsSub:
+      "Oprichters en productteams werken met ons om sneller te lanceren en AI-hype om te zetten in echte resultaten.",
+    testimonials: [
+      {
+        quote:
+          "Build Eleven bouwde onze marketingsite opnieuw in drie weken en integreerde een AI-assistent die nu de meeste inbound vragen afhandelt. Bookings gingen bijna direct omhoog.",
+        name: "Sanne de Vries",
+        role: "Oprichter, Northlane Studio",
+      },
+      {
+        quote:
+          "Zij begrijpen product, niet alleen code. Elke sprint leverde iets op dat we konden tonen aan klanten, en de AI-workflow bespaart ons team een volle dag per week.",
+        name: "Marcus Klein",
+        role: "COO, Payloop",
+      },
+      {
+        quote:
+          "De beste webpartner die we hebben gehad. Snelle, heldere communicatie en een site die eindelijk converteert. Support is sinds de lancering rotsvast.",
+        name: "Amira Hassan",
+        role: "Head of Growth, Trailkit",
+      },
+    ],
+    resultsTitle: "Resultaten die onze klanten zien",
+    results: [
+      { value: "3×", label: "Sneller live dan gemiddeld bureau" },
+      { value: "40%", label: "Meer gekwalificeerde inbound leads" },
+      { value: "8u", label: "Bespaard per week met AI-workflows" },
+      { value: "99,9%", label: "Uptime op beheerde sites" },
+    ],
     bookTitle: "Laten we het over je project hebben",
     bookSub:
       "Vertel ons wat je bouwt. We reageren binnen één werkdag om een gratis gesprek van 30 minuten in te plannen.",
