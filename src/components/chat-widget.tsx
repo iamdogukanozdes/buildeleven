@@ -106,84 +106,94 @@ export function ChatWidget({ lang }: { lang: "en" | "nl" }) {
       </button>
 
       {/* Chat panel */}
-      {open && (
-        <div className="fixed bottom-24 right-3 z-40 flex w-[calc(100vw-1.5rem)] max-w-sm flex-col overflow-hidden rounded-2xl border border-border bg-background shadow-2xl sm:right-6 sm:w-96">
-          <div className="border-b border-border bg-surface px-4 py-3">
-            <div className="flex items-start justify-between gap-2">
-              <div>
-                <h3 className="text-sm font-semibold text-foreground">{t.title}</h3>
-                <p className="text-xs text-muted-foreground">{t.subtitle}</p>
-              </div>
-              <button
-                type="button"
-                onClick={() => setOpen(false)}
-                aria-label={t.close}
-                className="rounded-full p-1 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-              >
-                <X className="h-4 w-4" />
-              </button>
+      <div
+        className={`
+          fixed bottom-24 right-3 z-40 flex w-[calc(100vw-1.5rem)] max-w-sm
+          flex-col overflow-hidden rounded-2xl border border-border bg-background shadow-2xl
+          transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]
+          sm:right-6 sm:w-96
+          ${open
+            ? "translate-y-0 scale-100 opacity-100"
+            : "pointer-events-none translate-y-6 scale-90 opacity-0"
+          }
+        `}
+        aria-hidden={!open}
+      >
+        <div className="border-b border-border bg-surface px-4 py-3">
+          <div className="flex items-start justify-between gap-2">
+            <div>
+              <h3 className="text-sm font-semibold text-foreground">{t.title}</h3>
+              <p className="text-xs text-muted-foreground">{t.subtitle}</p>
             </div>
-          </div>
-
-          <div
-            ref={scrollRef}
-            className="flex h-96 flex-col gap-3 overflow-y-auto px-4 py-4"
-          >
-            <div className="max-w-[85%] self-start rounded-2xl rounded-tl-sm bg-muted px-3.5 py-2.5 text-sm text-foreground">
-              {t.greeting}
-            </div>
-            {messages.map((m, i) => (
-              <div
-                key={i}
-                className={
-                  m.role === "user"
-                    ? "max-w-[85%] self-end rounded-2xl rounded-tr-sm bg-primary px-3.5 py-2.5 text-sm text-primary-foreground whitespace-pre-wrap"
-                    : "max-w-[85%] self-start rounded-2xl rounded-tl-sm bg-muted px-3.5 py-2.5 text-sm text-foreground whitespace-pre-wrap"
-                }
-              >
-                {m.content}
-              </div>
-            ))}
-            {loading && (
-              <div className="max-w-[85%] self-start rounded-2xl rounded-tl-sm bg-muted px-3.5 py-2.5 text-sm text-muted-foreground">
-                <span className="inline-flex gap-1">
-                  <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-current [animation-delay:-0.3s]" />
-                  <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-current [animation-delay:-0.15s]" />
-                  <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-current" />
-                </span>
-              </div>
-            )}
-            {error && (
-              <div className="max-w-[85%] self-start rounded-2xl bg-destructive/10 px-3.5 py-2.5 text-sm text-destructive">
-                {error}
-              </div>
-            )}
-          </div>
-
-          <form
-            onSubmit={handleSubmit}
-            className="flex items-center gap-2 border-t border-border bg-surface px-3 py-3"
-          >
-            <input
-              ref={inputRef}
-              type="text"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              placeholder={t.placeholder}
-              disabled={loading}
-              className="flex-1 rounded-full border border-border bg-background px-4 py-2 text-sm text-foreground outline-none focus:border-primary/60 focus:ring-2 focus:ring-primary/20 disabled:opacity-60"
-            />
             <button
-              type="submit"
-              disabled={loading || !input.trim()}
-              aria-label={t.send}
-              className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground transition-opacity hover:bg-primary/90 disabled:opacity-40"
+              type="button"
+              onClick={() => setOpen(false)}
+              aria-label={t.close}
+              className="rounded-full p-1 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
             >
-              <Send className="h-4 w-4" />
+              <X className="h-4 w-4" />
             </button>
-          </form>
+          </div>
         </div>
-      )}
+
+        <div
+          ref={scrollRef}
+          className="flex h-96 flex-col gap-3 overflow-y-auto px-4 py-4"
+        >
+          <div className="max-w-[85%] self-start rounded-2xl rounded-tl-sm bg-muted px-3.5 py-2.5 text-sm text-foreground">
+            {t.greeting}
+          </div>
+          {messages.map((m, i) => (
+            <div
+              key={i}
+              className={
+                m.role === "user"
+                  ? "max-w-[85%] self-end rounded-2xl rounded-tr-sm bg-primary px-3.5 py-2.5 text-sm text-primary-foreground whitespace-pre-wrap"
+                  : "max-w-[85%] self-start rounded-2xl rounded-tl-sm bg-muted px-3.5 py-2.5 text-sm text-foreground whitespace-pre-wrap"
+              }
+            >
+              {m.content}
+            </div>
+          ))}
+          {loading && (
+            <div className="max-w-[85%] self-start rounded-2xl rounded-tl-sm bg-muted px-3.5 py-2.5 text-sm text-muted-foreground">
+              <span className="inline-flex gap-1">
+                <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-current [animation-delay:-0.3s]" />
+                <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-current [animation-delay:-0.15s]" />
+                <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-current" />
+              </span>
+            </div>
+          )}
+          {error && (
+            <div className="max-w-[85%] self-start rounded-2xl bg-destructive/10 px-3.5 py-2.5 text-sm text-destructive">
+              {error}
+            </div>
+          )}
+        </div>
+
+        <form
+          onSubmit={handleSubmit}
+          className="flex items-center gap-2 border-t border-border bg-surface px-3 py-3"
+        >
+          <input
+            ref={inputRef}
+            type="text"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            placeholder={t.placeholder}
+            disabled={loading}
+            className="flex-1 rounded-full border border-border bg-background px-4 py-2 text-sm text-foreground outline-none focus:border-primary/60 focus:ring-2 focus:ring-primary/20 disabled:opacity-60"
+          />
+          <button
+            type="submit"
+            disabled={loading || !input.trim()}
+            aria-label={t.send}
+            className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground transition-opacity hover:bg-primary/90 disabled:opacity-40"
+          >
+            <Send className="h-4 w-4" />
+          </button>
+        </form>
+      </div>
     </>
   );
 }
