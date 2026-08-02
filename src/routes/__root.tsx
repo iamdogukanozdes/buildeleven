@@ -109,6 +109,33 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: "https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Space+Grotesk:wght@300..700&display=swap",
       },
     ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Organization",
+              "@id": "https://buildeleven.lovable.app/#organization",
+              name: "Build Eleven",
+              url: "https://buildeleven.lovable.app/",
+              logo: "https://buildeleven.lovable.app/favicon.png",
+              founder: { "@type": "Person", name: "Dogukan Ozdes" },
+              description:
+                "Build Eleven builds modern websites and AI solutions for businesses and busy founders.",
+            },
+            {
+              "@type": "WebSite",
+              "@id": "https://buildeleven.lovable.app/#website",
+              url: "https://buildeleven.lovable.app/",
+              name: "Build Eleven",
+              publisher: { "@id": "https://buildeleven.lovable.app/#organization" },
+            },
+          ],
+        }),
+      },
+    ],
   }),
   shellComponent: RootShell,
   component: RootComponent,

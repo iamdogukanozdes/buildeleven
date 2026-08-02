@@ -235,8 +235,37 @@ export const Route = createFileRoute("/")({
           "No website, no time, or an outdated one? Build Eleven builds modern websites and AI solutions for all kinds of businesses and busy founders. Book a free call.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://buildeleven.lovable.app/" },
       { name: "twitter:card", content: "summary_large_image" },
-
+    ],
+    links: [{ rel: "canonical", href: "https://buildeleven.lovable.app/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Service",
+              name: "Website design and development",
+              serviceType: "Web development",
+              description:
+                "Modern, fast websites built for businesses that have no site, an outdated one, or no time to build their own.",
+              provider: { "@type": "Organization", name: "Build Eleven", url: "https://buildeleven.lovable.app/" },
+              areaServed: "Worldwide",
+            },
+            {
+              "@type": "Service",
+              name: "AI solutions and automation",
+              serviceType: "AI implementation",
+              description:
+                "Custom AI assistants, automations and integrations that save business owners time and handle customer questions.",
+              provider: { "@type": "Organization", name: "Build Eleven", url: "https://buildeleven.lovable.app/" },
+              areaServed: "Worldwide",
+            },
+          ],
+        }),
+      },
     ],
   }),
   component: Index,

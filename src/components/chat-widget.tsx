@@ -178,6 +178,7 @@ export function ChatWidget({ lang }: { lang: "en" | "nl" }) {
           <input
             ref={inputRef}
             type="text"
+            aria-label={t.placeholder}
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder={t.placeholder}
