@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://id-preview--6b309db6-24e1-4ac9-974d-8b7ad8844e54.lovable.app/sitemap.xml
+Sitemap: https://buildeleven.lovable.app/sitemap.xml
