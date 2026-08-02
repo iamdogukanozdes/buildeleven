@@ -80,6 +80,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "author", content: "Build Eleven" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { title: "Build Eleven | Websites & AI" },
+      { property: "og:title", content: "Build Eleven | Websites & AI" },
+      { name: "twitter:title", content: "Build Eleven | Websites & AI" },
+      { name: "description", content: "No website, no time, or an outdated one? Build Eleven builds modern websites and AI solutions for all kinds of businesses and busy founders. Book a free call." },
+      { property: "og:description", content: "No website, no time, or an outdated one? Build Eleven builds modern websites and AI solutions for all kinds of businesses and busy founders. Book a free call." },
+      { name: "twitter:description", content: "No website, no time, or an outdated one? Build Eleven builds modern websites and AI solutions for all kinds of businesses and busy founders. Book a free call." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/77712e6e-c4cb-4cff-a6b5-5d326f35b04a" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/77712e6e-c4cb-4cff-a6b5-5d326f35b04a" },
     ],
     links: [
       {
