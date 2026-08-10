@@ -9,7 +9,7 @@ const COPY = {
   en: {
     title: "Scorpio from Build Eleven",
     subtitle: "Ask about AI, web, or booking a call.",
-    greeting: "Hi! I'm Scorpio, your Build Eleven assistant. Looking for a new website, interested in AI, or just want to chat about an idea? Let's talk.",
+    greeting: "Hi! I'm Scorpio, your Build Eleven AI assistant. Looking for a new website, interested in AI, or just want to chat about an idea? Let's talk.",
     placeholder: "Type your message...",
     send: "Send",
     open: "Open chat",
@@ -19,7 +19,7 @@ const COPY = {
   nl: {
     title: "Scorpio van Build Eleven",
     subtitle: "Vraag over AI, web of een gesprek plannen.",
-    greeting: "Hoi! Ik ben Scorpio, je Build Eleven-assistent. Op zoek naar een nieuwe website, benieuwd naar AI, of gewoon zin om te sparren over een idee? Laten we praten.",
+    greeting: "Hoi! Ik ben Scorpio, je Build Eleven AI-assistent. Op zoek naar een nieuwe website, benieuwd naar AI, of gewoon zin om te sparren over een idee? Laten we praten.",
     placeholder: "Typ je bericht...",
     send: "Verstuur",
     open: "Open chat",
