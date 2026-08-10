@@ -70,7 +70,7 @@ const translations = {
     ],
     whyTitle: "Why business owners pick us",
     whySub:
-      "You want a professional online presence without becoming a developer. We make that easy, fast, and stress-free.",
+      "You want a professional online presence without becoming a developer. We make that easy, fast, and stress free."
     reasons: [
       { title: "You stay focused", description: "We handle the tech from start to finish. You keep running your business." },
       { title: "Built to bring in clients", description: "Every page is designed to turn visitors into real leads and bookings." },
