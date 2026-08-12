@@ -854,7 +854,7 @@ function Footer({ t }: { t: T }) {
           Build Eleven
         </div>
         <p className="text-sm text-muted-foreground text-center sm:text-right">
-          © {new Date().getFullYear()} Build Eleven by Dogukan Ozdes · USA & Netherlands
+          © {new Date().getFullYear()} Build Eleven · USA & Netherlands
           <br />
           <span className="text-xs">{t.footerRights}</span>
         </p>
