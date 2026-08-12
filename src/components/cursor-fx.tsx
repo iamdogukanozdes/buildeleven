@@ -14,6 +14,52 @@ export function CursorFx() {
   const current = useRef({ x: 0, y: 0 });
   const [enabled, setEnabled] = useState(false);
 
+  // Scroll reveal — must run on ALL devices (including touch), otherwise
+  // `.reveal` elements stay at opacity 0 forever on mobile.
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const reveal = (el: Element) => el.classList.add("is-visible");
+
+    if (!("IntersectionObserver" in window)) {
+      document.querySelectorAll(".reveal").forEach(reveal);
+      return;
+    }
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            reveal(entry.target);
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.08, rootMargin: "0px 0px -5% 0px" },
+    );
+
+    const observeAll = () => document.querySelectorAll(".reveal:not(.is-visible)").forEach((el) => io.observe(el));
+    observeAll();
+
+    // Catch elements mounted after first paint (popups, lazy sections)
+    const mo = new MutationObserver(observeAll);
+    mo.observe(document.body, { childList: true, subtree: true });
+
+    // Safety net: if anything is still hidden after load, show it.
+    const fallback = window.setTimeout(() => {
+      document.querySelectorAll(".reveal:not(.is-visible)").forEach((el) => {
+        const r = el.getBoundingClientRect();
+        if (r.top < window.innerHeight * 1.2) reveal(el);
+      });
+    }, 1200);
+
+    return () => {
+      io.disconnect();
+      mo.disconnect();
+      window.clearTimeout(fallback);
+    };
+  }, []);
+
   useEffect(() => {
     if (typeof window === "undefined") return;
     const fine = window.matchMedia("(pointer: fine)").matches;
@@ -50,26 +96,12 @@ export function CursorFx() {
     window.addEventListener("mousemove", onMove, { passive: true });
     rafRef.current = requestAnimationFrame(tick);
 
-    // reveal on scroll
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            io.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.12 },
-    );
-    document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
-
     return () => {
       window.removeEventListener("mousemove", onMove);
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
-      io.disconnect();
     };
   }, []);
+
 
   if (!enabled) return null;
 
